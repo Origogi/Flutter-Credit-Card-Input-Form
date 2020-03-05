@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/constanst.dart';
 import 'package:flutter_credit_card/provider/my_notifier.dart';
+import 'package:flutter_credit_card/util/util.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {
@@ -191,19 +192,19 @@ class YellowBorder extends StatelessWidget {
 
     return AnimatedAlign(
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 100),
+        duration: Duration(milliseconds: 300),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           border: Border.all(
             color: Colors.yellow, //                   <--- border color
-            width: 2.0,
+            width: 1.0,
           ),
         ),
         height: height,
         width: width,
       ),
       alignment: align,
-      duration: Duration(milliseconds: 100),
+      duration: Duration(milliseconds: 300),
     );
   }
 
@@ -224,16 +225,16 @@ class YellowBorder extends StatelessWidget {
   }
 
   double getHeight(InputState currentState) {
-    var height = 330.0;
+    var height = 0.0;
     switch (currentState) {
       case InputState.number:
-        height = 50;
+        height = textSize('1234  5678  1234', kNumberFont).height + 15;
         break;
       case InputState.name:
-        height = 37;
+        height = textSize('hello world', kInputTextStyle).height + 15;
         break;
       case InputState.validate:
-        height = 37;
+        height = textSize('12/12', kInputTextStyle).height + 15;
         break;
       case InputState.CVS:
         // TODO: Handle this case.
@@ -246,13 +247,14 @@ class YellowBorder extends StatelessWidget {
     var width = 330.0;
     switch (currentState) {
       case InputState.number:
-        width = 330;
+        width = textSize('1234  5678  1234  1234', kNumberFont).width+ 15;
         break;
       case InputState.name:
-        width = 30;
+        //TODO 동적으로 입력 받은 값으로 변경
+        width = textSize('jeongtae kim', kInputTextStyle).width + 15;
         break;
       case InputState.validate:
-        width = 85;
+        width = textSize('MM/YY', kInputTextStyle).width + 15;
         break;
       case InputState.CVS:
         // TODO: Handle this case.
@@ -263,42 +265,24 @@ class YellowBorder extends StatelessWidget {
 }
 
 class CardNumber extends StatelessWidget {
-  final itemPadding = 20.0;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        SizedBox(
-          width: 10,
-        ),
-        Text(
-          '1234',
-          style: kNumberFont,
-        ),
-        SizedBox(
-          width: itemPadding,
-        ),
-        Text(
-          '1234',
-          style: kNumberFont,
-        ),
-        SizedBox(
-          width: itemPadding,
-        ),
-        Text(
-          '1234',
-          style: kNumberFont,
-        ),
-        SizedBox(
-          width: itemPadding,
-        ),
-        Text(
-          '1234',
-          style: kNumberFont,
-        )
-      ],
+
+    String number = '1234  1234  1234  1234';
+    final text = Container(
+      padding: EdgeInsets.only(left : 5),
+      child: Text(
+        number,
+        style: kNumberFont,
+      ),
     );
+
+
+
+    return text;
   }
+
+ 
 }
 
 class MyAppbar extends StatelessWidget {

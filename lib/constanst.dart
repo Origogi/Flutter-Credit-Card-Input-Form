@@ -7,14 +7,14 @@ const kNumberFont = TextStyle(
     fontSize: 25);
 
 const kTextStyle = TextStyle(
-  fontSize: 10,
+  fontSize: 8,
   fontWeight: FontWeight.bold,
   color: Colors.white,
   fontFamily: 'U and I',
 );
 
 const kInputTextStyle = TextStyle(
-  fontSize: 20,
+  fontSize: 15,
   color: Colors.white,
   fontFamily: 'U and I',
 );
