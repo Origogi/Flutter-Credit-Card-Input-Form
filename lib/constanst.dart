@@ -7,8 +7,8 @@ const kNumberFont = TextStyle(
     fontSize: 25);
 
 const kTextStyle = TextStyle(
-  fontSize: 13,
-  fontWeight: FontWeight.w800,
+  fontSize: 10,
+  fontWeight: FontWeight.bold,
   color: Colors.white,
   fontFamily: 'U and I',
 );
@@ -18,3 +18,10 @@ const kInputTextStyle = TextStyle(
   color: Colors.white,
   fontFamily: 'U and I',
 );
+
+enum InputState {
+  number,
+  name,
+  validate,
+  CVS
+}
