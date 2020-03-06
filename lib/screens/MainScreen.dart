@@ -16,37 +16,41 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              MyAppbar(),
-              CardForm(),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                  height: 120,
-                  child: PageView.builder(
-                      physics:  NeverScrollableScrollPhysics(),
-                      controller: PageController(
-                        viewportFraction: 0.9,
-                        initialPage: 0,
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: InputForm(title: 'Card number $index'),
-                        );
-                      },
-                      itemCount: 6)),
-              Align(
-                alignment: Alignment.centerRight,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: MyAppbar(),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: CardForm(),
+            ),
+
+            Container(
+                height: 110,
+                child: PageView.builder(
+                    // physics: NeverScrollableScrollPhysics(),
+                    controller: PageController(
+                      viewportFraction: 0.92,
+                      initialPage: 0,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: InputForm(title: 'Card number $index'),
+                      );
+                    },
+                    itemCount: 6)),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 22),
                 child: RoundButton(),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -68,7 +72,7 @@ class InputForm extends StatelessWidget {
           children: <Widget>[
             Text(
               title,
-              style: TextStyle(fontSize: 15, color: Colors.grey),
+              style: TextStyle(fontSize: 15, color: Colors.black38),
             ),
             SizedBox(
               height: 15,
@@ -76,7 +80,7 @@ class InputForm extends StatelessWidget {
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                    borderSide: BorderSide(width: 0.5, color: Colors.grey),
+                    borderSide: BorderSide(width: 0.5, color: Colors.black38),
                     borderRadius: BorderRadius.circular(5)),
               ),
             )
