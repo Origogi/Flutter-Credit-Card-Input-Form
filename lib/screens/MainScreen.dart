@@ -10,6 +10,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  PageController controller = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,75 +26,100 @@ class _MainScreenState extends State<MainScreen> {
               SizedBox(
                 height: 10,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Card Number',
-                    style: TextStyle(fontSize: 15, color: Colors.grey),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 0.5, color: Colors.grey),
-                          borderRadius: BorderRadius.circular(5)),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        boxShadow: <BoxShadow>[
-                          BoxShadow(
-                              color: Colors.black54,
-                              blurRadius: 5.0,
-                              offset: Offset(0, 5))
-                        ],
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)),
-                        gradient: LinearGradient(
-                            colors: [
-                              const Color(0xff6c16c7),
-                              const Color(0xFFB16B92),
-                            ],
-                            begin: const FractionalOffset(0.0, 0.0),
-                            end: const FractionalOffset(1.0, 0.0),
-                            stops: [0.0, 1.0],
-                            tileMode: TileMode.clamp),
+              Container(
+                  height: 120,
+                  child: PageView.builder(
+                      physics:  NeverScrollableScrollPhysics(),
+                      controller: PageController(
+                        viewportFraction: 0.9,
+                        initialPage: 0,
                       ),
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            Provider.of<MyNotifier>(context, listen: false)
-                                .moveNextState();
-                          });
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 30),
-                          child: Text(
-                            'Next',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15),
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              )
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: InputForm(title: 'Card number $index'),
+                        );
+                      },
+                      itemCount: 6)),
+              Align(
+                alignment: Alignment.centerRight,
+                child: RoundButton(),
+              ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class InputForm extends StatelessWidget {
+  final String title;
+
+  InputForm({@required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 10),
+      child: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              title,
+              style: TextStyle(fontSize: 15, color: Colors.grey),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(width: 0.5, color: Colors.grey),
+                    borderRadius: BorderRadius.circular(5)),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class RoundButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+              color: Colors.black54, blurRadius: 5.0, offset: Offset(0, 5))
+        ],
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            bottomLeft: Radius.circular(30),
+            bottomRight: Radius.circular(30)),
+        gradient: LinearGradient(
+            colors: [
+              const Color(0xff6c16c7),
+              const Color(0xFFB16B92),
+            ],
+            begin: const FractionalOffset(0.0, 0.0),
+            end: const FractionalOffset(1.0, 0.0),
+            stops: [0.0, 1.0],
+            tileMode: TileMode.clamp),
+      ),
+      child: InkWell(
+        onTap: () {
+          Provider.of<MyNotifier>(context, listen: false).moveNextState();
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+          child: Text(
+            'Next',
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
           ),
         ),
       ),
@@ -247,7 +274,7 @@ class YellowBorder extends StatelessWidget {
     var width = 330.0;
     switch (currentState) {
       case InputState.number:
-        width = textSize('1234  5678  1234  1234', kNumberFont).width+ 15;
+        width = textSize('1234  5678  1234  1234', kNumberFont).width + 15;
         break;
       case InputState.name:
         //TODO 동적으로 입력 받은 값으로 변경
@@ -267,22 +294,17 @@ class YellowBorder extends StatelessWidget {
 class CardNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     String number = '1234  1234  1234  1234';
     final text = Container(
-      padding: EdgeInsets.only(left : 5),
+      padding: EdgeInsets.only(left: 5),
       child: Text(
         number,
         style: kNumberFont,
       ),
     );
 
-
-
     return text;
   }
-
- 
 }
 
 class MyAppbar extends StatelessWidget {
