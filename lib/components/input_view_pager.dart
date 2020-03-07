@@ -21,7 +21,7 @@ class InputViewPager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 120,
+        height: 100,
         child: PageView.builder(
             physics: NeverScrollableScrollPhysics(),
             controller: pageController,
@@ -108,7 +108,12 @@ class _InputFormState extends State<InputForm> {
                 }
               },
               decoration: InputDecoration(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
                 border: OutlineInputBorder(
+                    borderSide: BorderSide(width: 0.5, color: Colors.black38),
+                    borderRadius: BorderRadius.circular(5)),
+                focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(width: 0.5, color: Colors.black38),
                     borderRadius: BorderRadius.circular(5)),
               ),
