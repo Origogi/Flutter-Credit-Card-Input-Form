@@ -24,9 +24,28 @@ const kTextStyle = TextStyle(
   fontFamily: 'U and I',
 );
 
-const kInputTextStyle = TextStyle(
+const kNametextStyle = TextStyle(
   fontSize: 15,
   color: Colors.white,
+  fontFamily: 'U and I',
+);
+
+const kDefaultNameTextStyle = TextStyle(
+  fontSize: 15,
+  color: Colors.grey,
+  fontFamily: 'U and I',
+);
+
+
+const kValidtextStyle = TextStyle(
+  fontSize: 15,
+  color: Colors.white,
+  fontFamily: 'U and I',
+);
+
+const kDefaultValidTextStyle = TextStyle(
+  fontSize: 15,
+  color: Colors.grey,
   fontFamily: 'U and I',
 );
 
@@ -36,4 +55,4 @@ const kSignTextStyle = TextStyle(
   fontFamily: 'Satisfy',
 );
 
-enum InputState { number, name, validate, CVC }
+enum InputState { number, name, validate, CVV }

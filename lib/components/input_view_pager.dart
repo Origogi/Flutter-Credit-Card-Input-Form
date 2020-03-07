@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/constanst.dart';
+import 'package:flutter_credit_card/provider/card_cvv_provider.dart';
+import 'package:flutter_credit_card/provider/card_name_provider.dart';
+import 'package:flutter_credit_card/provider/card_valid_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_credit_card/provider/card_number_provider.dart';
 
@@ -93,10 +96,15 @@ class _InputFormState extends State<InputForm> {
               height: 15,
             ),
             TextField(
-              
               onChanged: (newValue) {
                 if (widget.index == InputState.number.index) {
                   Provider.of<CardNumberProvider>(context).setNumber(newValue);
+                } else if (widget.index == InputState.name.index) {
+                  Provider.of<CardNameProvider>(context).setName(newValue);
+                } else if (widget.index == InputState.validate.index) {
+                  Provider.of<CardValidProvider>(context).setValid(newValue);
+                } else if (widget.index == InputState.CVV.index) {
+                  Provider.of<CardCVVProvider>(context).setCVV(newValue);
                 }
               },
               decoration: InputDecoration(

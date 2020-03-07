@@ -37,7 +37,7 @@ class RoundButton extends StatelessWidget {
           child: Consumer<StateProvider>(
             builder: (context, notifier, child) {
               return Text(
-                notifier.getCurrentState() == InputState.CVC ? 'Done' : 'Next',
+                notifier.getCurrentState() == InputState.CVV ? 'Done' : 'Next',
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

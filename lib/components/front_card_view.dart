@@ -5,6 +5,7 @@ import 'package:flutter_credit_card/components/yellow_border.dart';
 import '../constanst.dart';
 import 'card_name.dart';
 import 'card_number.dart';
+import 'card_valid.dart';
 
 class FrondCardView extends StatelessWidget {
   @override
@@ -69,10 +70,7 @@ class FrondCardView extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    Text(
-                      'MM/YY',
-                      style: kInputTextStyle,
-                    ),
+                    CardValid(),
                   ],
                 ),
               ),
@@ -83,4 +81,3 @@ class FrondCardView extends StatelessWidget {
     );
   }
 }
-

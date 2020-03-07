@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/provider/card_name_provider.dart';
 import 'package:flutter_credit_card/provider/state_provider.dart';
 import 'package:flutter_credit_card/util/util.dart';
 import 'package:provider/provider.dart';
@@ -12,11 +13,11 @@ class YellowBorder extends StatelessWidget {
 
     final align = getAlign(currentState);
     final height = getHeight(currentState);
-    final width = getWidth(currentState);
+    final width = getWidth(context, currentState);
 
     return AnimatedAlign(
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 300),
+        duration: Duration(milliseconds: 150),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           border: Border.all(
@@ -41,7 +42,7 @@ class YellowBorder extends StatelessWidget {
       case InputState.name:
         align = Alignment.bottomLeft;
         break;
-      case InputState.CVC:
+      case InputState.CVV:
       case InputState.validate:
         align = Alignment.bottomRight;
         break;
@@ -56,29 +57,33 @@ class YellowBorder extends StatelessWidget {
         height = textSize('1234  5678  1234', kCardNumberTextStyle).height + 15;
         break;
       case InputState.name:
-        height = textSize('hello world', kInputTextStyle).height + 15;
+        height = textSize('hello world', kNametextStyle).height + 15;
         break;
-      case InputState.CVC:
+      case InputState.CVV:
       case InputState.validate:
-        height = textSize('12/12', kInputTextStyle).height + 15;
+        height = textSize('12/12', kNametextStyle).height + 15;
         break;
     }
     return height;
   }
 
-  double getWidth(InputState currentState) {
+  double getWidth(context, currentState) {
     var width = 330.0;
     switch (currentState) {
       case InputState.number:
         width = textSize('1234  5678  1234  1234', kCardNumberTextStyle).width + 40;
         break;
       case InputState.name:
-        width = textSize('jeongtae kim', kInputTextStyle).width + 15;
+        String name = Provider.of<CardNameProvider>(context).cardName;
+        if (name.isEmpty) {
+          name = 'NAME SURNAME';
+        }
+
+        width = textSize(name, kNametextStyle).width + 25;
         break;
-      case InputState.CVC:
+      case InputState.CVV:
       case InputState.validate:
-        width = textSize('MM/YY', kInputTextStyle).width + 20;
-        break;
+        width = textSize('MM/YY', kNametextStyle).width + 20;
         break;
     }
     return width;

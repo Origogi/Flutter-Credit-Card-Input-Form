@@ -10,7 +10,7 @@ class StateProvider with ChangeNotifier {
     } else if (InputState.name == _currentState) {
       _currentState = InputState.validate;
     } else {
-      _currentState = InputState.CVC;
+      _currentState = InputState.CVV;
     }
     print(_currentState);
     notifyListeners();

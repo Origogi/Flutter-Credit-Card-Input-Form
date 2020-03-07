@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/provider/card_cvv_provider.dart';
+import 'package:flutter_credit_card/provider/card_name_provider.dart';
 import 'package:flutter_credit_card/provider/card_number_provider.dart';
+import 'package:flutter_credit_card/provider/card_valid_provider.dart';
 import 'package:flutter_credit_card/provider/state_provider.dart';
 
 import 'package:flutter_credit_card/screens/MainScreen.dart';
@@ -12,6 +15,15 @@ void main() => runApp(MultiProvider(
         ),
         ChangeNotifierProvider(
           create: (context) => CardNumberProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CardNameProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CardValidProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CardCVVProvider(),
         )
       ],
       child: MyApp(),

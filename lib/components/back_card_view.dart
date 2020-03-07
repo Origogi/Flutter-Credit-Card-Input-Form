@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../constanst.dart';
+import 'card_cvv.dart';
+import 'card_sign.dart';
 
 class BackCardView extends StatelessWidget {
   @override
@@ -24,18 +26,7 @@ class BackCardView extends StatelessWidget {
           ),
           Align(
               alignment: Alignment.centerLeft,
-              child: Container(
-                margin: EdgeInsets.only(left: 25),
-                height: 40,
-                width: 220,
-                color: Colors.grey,
-                child: Center(
-                  child: Text(
-                    'Kim jeongtae',
-                    style: kSignTextStyle,
-                  ),
-                ),
-              )),
+              child: CardSign()),
           Align(
               alignment: Alignment.centerRight,
               child: Container(
@@ -47,20 +38,7 @@ class BackCardView extends StatelessWidget {
                     width: 1.0,
                   ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(3.0),
-                  child: Container(
-                    height: 40,
-                    width: 70,
-                    color: Colors.white,
-                    child: Center(
-                      child: Text(
-                        '123',
-                        style: kCVCTextStyle,
-                      ),
-                    ),
-                  ),
-                ),
+                child: CardCVV(),
               )),
           Align(
               alignment: Alignment.bottomRight,
@@ -76,3 +54,4 @@ class BackCardView extends StatelessWidget {
     );
   }
 }
+
