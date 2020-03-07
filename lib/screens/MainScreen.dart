@@ -42,7 +42,7 @@ class _MainScreenState extends State<MainScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: FlipCard(
-                flipOnTouch: true,
+                flipOnTouch: false,
                 key: cardKey,
                 front: FrondCardView(),
                 back: BackCardView(),

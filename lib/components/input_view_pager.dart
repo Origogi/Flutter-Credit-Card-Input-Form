@@ -3,6 +3,7 @@ import 'package:flutter_credit_card/constanst.dart';
 import 'package:flutter_credit_card/provider/card_cvv_provider.dart';
 import 'package:flutter_credit_card/provider/card_name_provider.dart';
 import 'package:flutter_credit_card/provider/card_valid_provider.dart';
+import 'package:flutter_credit_card/provider/state_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_credit_card/provider/card_number_provider.dart';
 
@@ -18,10 +19,22 @@ class InputViewPager extends StatelessWidget {
     3: 'Security Code(CVC)'
   };
 
+  List<FocusNode> focusNodes = [
+    FocusNode(),
+    FocusNode(),
+    FocusNode(),
+    FocusNode(),
+  ];
+
   @override
   Widget build(BuildContext context) {
+    Provider.of<StateProvider>(context).addListener(() {
+      int index = Provider.of<StateProvider>(context).getCurrentState().index;
+      FocusScope.of(context).requestFocus(focusNodes[index]);
+    });
+
     return Container(
-        height: 100,
+        height: 110,
         child: PageView.builder(
             physics: NeverScrollableScrollPhysics(),
             controller: pageController,
@@ -29,6 +42,7 @@ class InputViewPager extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InputForm(
+                    focusNode: focusNodes[index],
                     title: titleMap[index],
                     index: index,
                     pageController: pageController),
@@ -42,8 +56,10 @@ class InputForm extends StatefulWidget {
   final String title;
   final int index;
   final PageController pageController;
+  final FocusNode focusNode;
 
-  InputForm({@required this.title, this.index, this.pageController});
+  InputForm(
+      {@required this.title, this.index, this.pageController, this.focusNode});
 
   @override
   _InputFormState createState() => _InputFormState();
@@ -51,6 +67,11 @@ class InputForm extends StatefulWidget {
 
 class _InputFormState extends State<InputForm> {
   var opacicy = 0.3;
+
+  int maxLength;
+  TextInputType textInputType;
+  TextEditingController textController =  TextEditingController();
+
 
   void onChange() {
     setState(() {
@@ -70,7 +91,25 @@ class _InputFormState extends State<InputForm> {
       opacicy = 1;
     }
 
+    // Provider.of<StateProvider>(context).addListener(() {
+    //   print(Provider.of<StateProvider>(context).getCurrentState());
+    // });
+
     widget.pageController.addListener(onChange);
+
+    if (widget.index == InputState.number.index) {
+      maxLength = 16;
+      textInputType = TextInputType.number;
+    } else if (widget.index == InputState.name.index) {
+      maxLength = 20;
+      textInputType = TextInputType.text;
+    } else if (widget.index == InputState.validate.index) {
+      maxLength = 4;
+      textInputType = TextInputType.number;
+    } else if (widget.index == InputState.CVV.index) {
+      maxLength = 3;
+      textInputType = TextInputType.number;
+    }
   }
 
   @override
@@ -93,9 +132,13 @@ class _InputFormState extends State<InputForm> {
               style: TextStyle(fontSize: 15, color: Colors.black38),
             ),
             SizedBox(
-              height: 15,
+              height: 10,
             ),
             TextField(
+              controller: textController,
+              focusNode: widget.focusNode,
+              keyboardType: textInputType,
+              maxLength: maxLength,
               onChanged: (newValue) {
                 if (widget.index == InputState.number.index) {
                   Provider.of<CardNumberProvider>(context).setNumber(newValue);
@@ -108,8 +151,13 @@ class _InputFormState extends State<InputForm> {
                 }
               },
               decoration: InputDecoration(
+                // counter: Offstage(),
+                counter: SizedBox(
+                  height: 0,
+                ),
+
                 contentPadding:
-                    const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
+                    const EdgeInsets.symmetric(vertical: 2.0, horizontal: 10),
                 border: OutlineInputBorder(
                     borderSide: BorderSide(width: 0.5, color: Colors.black38),
                     borderRadius: BorderRadius.circular(5)),
