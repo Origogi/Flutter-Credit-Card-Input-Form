@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/constanst.dart';
 
-class MyNotifier with ChangeNotifier {
+class StateProvider with ChangeNotifier {
   var _currentState = InputState.number;
 
   void moveNextState() {
@@ -10,7 +10,7 @@ class MyNotifier with ChangeNotifier {
     } else if (InputState.name == _currentState) {
       _currentState = InputState.validate;
     } else {
-      _currentState = InputState.CVS;
+      _currentState = InputState.CVC;
     }
     print(_currentState);
     notifyListeners();

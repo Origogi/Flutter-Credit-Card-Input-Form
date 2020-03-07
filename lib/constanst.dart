@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 
-const kNumberFont = TextStyle(
+const kCardNumberTextStyle = TextStyle(
     color: Colors.white,
     fontFamily: 'U and I',
     fontWeight: FontWeight.bold,
+    fontSize: 24);
+
+    const kCardDefaultTextStyle = TextStyle(
+    color: Colors.grey,
+    fontFamily: 'U and I',
     fontSize: 25);
+
+const kCVCTextStyle = TextStyle(
+    color: Colors.black,
+    fontFamily: 'Satisfy',
+    fontWeight: FontWeight.bold,
+    fontSize: 20);
 
 const kTextStyle = TextStyle(
   fontSize: 8,
@@ -19,9 +30,10 @@ const kInputTextStyle = TextStyle(
   fontFamily: 'U and I',
 );
 
-enum InputState {
-  number,
-  name,
-  validate,
-  CVS
-}
+const kSignTextStyle = TextStyle(
+  fontSize: 20,
+  color: Colors.white,
+  fontFamily: 'Satisfy',
+);
+
+enum InputState { number, name, validate, CVC }

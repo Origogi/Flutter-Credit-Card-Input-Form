@@ -20,7 +20,9 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
-  provider: ^4.0.4
+  provider: ^3.0.0+1
+  flip_card: ^0.4.4
+
 
 
 
@@ -38,3 +40,6 @@ flutter:
     - family: U and I
       fonts:
         - asset: fonts/fontYouandiModernTR.ttf
+    - family: Satisfy
+      fonts:
+        - asset: fonts/Satisfy-Regular.ttf
