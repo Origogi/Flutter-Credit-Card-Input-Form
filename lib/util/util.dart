@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/constanst.dart';
 
 Size textSize(String text, TextStyle style) {
   final TextPainter textPainter = TextPainter(
@@ -7,4 +8,8 @@ Size textSize(String text, TextStyle style) {
       textDirection: TextDirection.ltr)
     ..layout(minWidth: 0, maxWidth: double.infinity);
   return textPainter.size;
+}
+
+CardCompany getCardCompany (String number) {
+  
 }

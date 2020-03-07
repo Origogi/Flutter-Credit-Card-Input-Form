@@ -89,11 +89,8 @@ class _InputFormState extends State<InputForm> {
 
     if (widget.index == 0) {
       opacicy = 1;
+      
     }
-
-    // Provider.of<StateProvider>(context).addListener(() {
-    //   print(Provider.of<StateProvider>(context).getCurrentState());
-    // });
 
     widget.pageController.addListener(onChange);
 
@@ -135,6 +132,7 @@ class _InputFormState extends State<InputForm> {
               height: 10,
             ),
             TextField(
+              autofocus: widget.index == 0,
               controller: textController,
               focusNode: widget.focusNode,
               keyboardType: textInputType,

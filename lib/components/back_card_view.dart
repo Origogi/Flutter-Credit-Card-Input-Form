@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/components/card_logo.dart';
 
-import '../constanst.dart';
 import 'card_cvv.dart';
 import 'card_sign.dart';
 
@@ -43,11 +43,8 @@ class BackCardView extends StatelessWidget {
           Align(
               alignment: Alignment.bottomRight,
               child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Image.asset(
-                  'images/mastercard.png',
-                  width: 50,
-                ),
+                padding: const EdgeInsets.only(bottom: 10, right: 30),
+                child: CardLogo(),
               )),
         ],
       ),
