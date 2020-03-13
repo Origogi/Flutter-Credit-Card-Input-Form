@@ -12,15 +12,22 @@
 
 ## Reference
 
-https://dribbble.com/shots/6440077-Add-a-New-Credit-Card-alternate-flow
+<div align="center">
+
 
 ![sample](https://user-images.githubusercontent.com/35194820/75879920-a157a080-5e5f-11ea-9763-823ad8f1a4e5.gif)
+https://dribbble.com/shots/6440077-Add-a-New-Credit-Card-alternate-flow
 
+</div><br>
 
 ## Real output (실제 결과물)
 
+<div align="center">
+
+
 <img src="https://user-images.githubusercontent.com/35194820/76142013-d0168680-60ac-11ea-9007-0db57373f96f.gif" width="250" >
 
+</div><br>
 
 ## Total elapsed time (총 개발 기간)
 
