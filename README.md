@@ -1,6 +1,14 @@
-# flutter_credit_card
+# <div align="center">Credit Card input form</div>
 
-Flutter credit card input
+<div align="center">
+	<a href="https://flutter.io">
+    <img src="https://img.shields.io/badge/Platform-Flutter-yellow.svg"
+      alt="Platform" />
+  </a>
+<a href="https://github.com/Solido/awesome-flutter">
+   <img alt="Awesome Flutter" src="https://img.shields.io/badge/Awesome-Flutter-blue.svg?longCache=true&style=flat-square" />
+</a>
+</div><br>
 
 ## Reference
 
@@ -12,9 +20,6 @@ https://dribbble.com/shots/6440077-Add-a-New-Credit-Card-alternate-flow
 ## Real output (실제 결과물)
 
 <img src="https://user-images.githubusercontent.com/35194820/76142013-d0168680-60ac-11ea-9007-0db57373f96f.gif" width="250" >
-
-<!-- 
-![output](https://user-images.githubusercontent.com/35194820/76142013-d0168680-60ac-11ea-9007-0db57373f96f.gif) -->
 
 
 ## Total elapsed time (총 개발 기간)
