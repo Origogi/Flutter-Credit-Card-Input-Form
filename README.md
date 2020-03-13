@@ -1,4 +1,4 @@
-# <div align="center">Credit Card input form</div>
+![스크린샷 2020-03-13 오후 1 48 51](https://user-images.githubusercontent.com/35194820/76590756-8c4ed180-6531-11ea-89f5-382a9553541e.png)
 
 <div align="center">
 	<a href="https://flutter.io">
@@ -16,6 +16,7 @@
 
 
 ![sample](https://user-images.githubusercontent.com/35194820/75879920-a157a080-5e5f-11ea-9763-823ad8f1a4e5.gif)
+
 https://dribbble.com/shots/6440077-Add-a-New-Credit-Card-alternate-flow
 
 </div><br>
