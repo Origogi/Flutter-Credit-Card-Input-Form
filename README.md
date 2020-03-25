@@ -30,10 +30,6 @@ https://dribbble.com/shots/6440077-Add-a-New-Credit-Card-alternate-flow
 
 </div><br>
 
-## Total elapsed time (총 개발 기간)
-
-- 4 day
-
 ## Source Tree
 
 ```
