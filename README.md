@@ -78,7 +78,7 @@ For use state management
 
 ## ToDo
 
-- [ ] Dart package 
+- [ ] Release Dart package (until May)
 
 
 ## Note
