@@ -70,8 +70,7 @@ class _InputFormState extends State<InputForm> {
 
   int maxLength;
   TextInputType textInputType;
-  TextEditingController textController =  TextEditingController();
-
+  TextEditingController textController = TextEditingController();
 
   void onChange() {
     setState(() {
@@ -89,13 +88,12 @@ class _InputFormState extends State<InputForm> {
 
     if (widget.index == 0) {
       opacicy = 1;
-      
     }
 
     widget.pageController.addListener(onChange);
 
     if (widget.index == InputState.number.index) {
-      maxLength = 16;
+      maxLength = 19;
       textInputType = TextInputType.number;
     } else if (widget.index == InputState.name.index) {
       maxLength = 20;
@@ -139,6 +137,24 @@ class _InputFormState extends State<InputForm> {
               maxLength: maxLength,
               onChanged: (newValue) {
                 if (widget.index == InputState.number.index) {
+                  print(newValue);
+                  String cardNumber = '';
+
+                  List<String> numbers4Digits = newValue.split(" ");
+
+                  if (numbers4Digits.last.length > 4) {
+                    String last4Number = numbers4Digits.removeLast();
+                    numbers4Digits.add(last4Number.substring(0, 4));
+                    numbers4Digits.add(last4Number.substring(4));
+
+                    for (String number in numbers4Digits) {
+                      cardNumber = cardNumber + " " + number;
+                    }
+
+                    cardNumber = cardNumber.substring(1);
+                    textController.text = cardNumber;
+                  }
+
                   Provider.of<CardNumberProvider>(context).setNumber(newValue);
                 } else if (widget.index == InputState.name.index) {
                   Provider.of<CardNameProvider>(context).setName(newValue);

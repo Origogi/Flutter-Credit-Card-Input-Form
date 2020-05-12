@@ -20,12 +20,7 @@ class CardNumber extends StatelessWidget {
     }
     String cardNumber = '';
 
-    for (int i = 1; i <= number.length; i++) {
-      cardNumber = cardNumber + number[i - 1];
-      if (i % 4 == 0 && i != number.length) {
-        cardNumber = cardNumber + '  ';
-      }
-    }
+    cardNumber = number.replaceAll(" ", "  ");
 
     return Container(
       child: Padding(
