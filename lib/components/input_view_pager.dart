@@ -99,7 +99,7 @@ class _InputFormState extends State<InputForm> {
       maxLength = 20;
       textInputType = TextInputType.text;
     } else if (widget.index == InputState.validate.index) {
-      maxLength = 4;
+      maxLength = 5;
       textInputType = TextInputType.number;
     } else if (widget.index == InputState.CVV.index) {
       maxLength = 3;
@@ -135,9 +135,20 @@ class _InputFormState extends State<InputForm> {
               focusNode: widget.focusNode,
               keyboardType: textInputType,
               maxLength: maxLength,
-              onChanged: (newValue) {
+              onChanged: (String newValue) {
                 if (widget.index == InputState.number.index) {
                   print(newValue);
+
+                  if (newValue.isNotEmpty &&
+                      newValue[newValue.length - 1] == ' ') {
+                    textController.text =
+                        newValue.substring(0, newValue.length - 1);
+                    Provider.of<CardNumberProvider>(context)
+                        .setNumber(newValue);
+
+                    return;
+                  }
+
                   String cardNumber = '';
 
                   List<String> numbers4Digits = newValue.split(" ");
@@ -159,7 +170,20 @@ class _InputFormState extends State<InputForm> {
                 } else if (widget.index == InputState.name.index) {
                   Provider.of<CardNameProvider>(context).setName(newValue);
                 } else if (widget.index == InputState.validate.index) {
-                  Provider.of<CardValidProvider>(context).setValid(newValue);
+                  String validate;
+                  if (newValue.length == 3) {
+                    if (newValue.contains("/")) {
+                      validate = newValue.substring(0, 2);
+                    } else {
+                      validate = newValue.substring(0, 2) +
+                          "/" +
+                          newValue.substring(2);
+                    }
+                    textController.text = validate;
+                  } else {
+                    validate = newValue;
+                  }
+                  Provider.of<CardValidProvider>(context).setValid(validate);
                 } else if (widget.index == InputState.CVV.index) {
                   Provider.of<CardCVVProvider>(context).setCVV(newValue);
                 }

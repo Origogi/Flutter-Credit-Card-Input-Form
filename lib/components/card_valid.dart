@@ -8,6 +8,8 @@ class CardValid extends StatelessWidget {
   Widget build(BuildContext context) {
     String inputCardValid = Provider.of<CardValidProvider>(context).cardValid;
 
+    inputCardValid = inputCardValid.replaceAll("/", "");
+
     var defaultCardValid = '';
 
     switch (inputCardValid.length) {
@@ -25,8 +27,12 @@ class CardValid extends StatelessWidget {
             inputCardValid[0] + inputCardValid[1] + '/' + inputCardValid[2];
         defaultCardValid = 'Y';
         break;
-      case 4:inputCardValid =
-            inputCardValid[0] + inputCardValid[1] + '/' + inputCardValid[2] + inputCardValid[3];
+      case 4:
+        inputCardValid = inputCardValid[0] +
+            inputCardValid[1] +
+            '/' +
+            inputCardValid[2] +
+            inputCardValid[3];
         defaultCardValid = '';
         break;
     }

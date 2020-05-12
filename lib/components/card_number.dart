@@ -10,6 +10,7 @@ class CardNumber extends StatelessWidget {
     Provider.of<CardNumberProvider>(context).cardNumber;
 
     String number = Provider.of<CardNumberProvider>(context).cardNumber;
+    number = number.replaceAll(" ", "");
     String defaultNumber = '';
 
     for (int i = 1; i <= 16 - number.length; i++) {
@@ -20,7 +21,12 @@ class CardNumber extends StatelessWidget {
     }
     String cardNumber = '';
 
-    cardNumber = number.replaceAll(" ", "  ");
+    for (int i = 1; i <= number.length; i++) {
+      cardNumber = cardNumber + number[i - 1];
+      if (i % 4 == 0 && i != number.length) {
+        cardNumber = cardNumber + '  ';
+      }
+    }
 
     return Container(
       child: Padding(
