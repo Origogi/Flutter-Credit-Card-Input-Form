@@ -79,14 +79,6 @@ For use state management
 ## ToDo
 
 - [x] When entering card number or expiration date in TextField, additional delimiter ("", /) is displayed.
-- [ ] Support the more card company logo(Visa, Master, Amex, Discover)
+- [x] Support the more card company logo(Visa, Master, Amex, Discover)
 - [ ] Add `Prev` button
 - [ ] Release Dart package
-
-## Note
-
-- 이 코드는 모든 카드사를 체크하지 않습니다. (Visa, Master) 더 많은 카드사를 지원하기 위해서 `card_logo.dart` file을 수정하십시오
-
------------------------------------------
-
-- This code does not check all card companies(only Visa and master). Modify the `card_logo.dart` file to support more card companies
