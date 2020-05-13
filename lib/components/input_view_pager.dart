@@ -19,7 +19,7 @@ class InputViewPager extends StatelessWidget {
     3: 'Security Code(CVC)'
   };
 
-  List<FocusNode> focusNodes = [
+  final List<FocusNode> focusNodes = [
     FocusNode(),
     FocusNode(),
     FocusNode(),
@@ -143,6 +143,8 @@ class _InputFormState extends State<InputForm> {
                       newValue[newValue.length - 1] == ' ') {
                     textController.text =
                         newValue.substring(0, newValue.length - 1);
+                    textController.selection = TextSelection.fromPosition(
+                        TextPosition(offset: textController.text.length));
                     Provider.of<CardNumberProvider>(context)
                         .setNumber(newValue);
 
@@ -164,6 +166,8 @@ class _InputFormState extends State<InputForm> {
 
                     cardNumber = cardNumber.substring(1);
                     textController.text = cardNumber;
+                    textController.selection = TextSelection.fromPosition(
+                        TextPosition(offset: textController.text.length));
                   }
 
                   Provider.of<CardNumberProvider>(context).setNumber(newValue);
@@ -180,6 +184,8 @@ class _InputFormState extends State<InputForm> {
                           newValue.substring(2);
                     }
                     textController.text = validate;
+                    textController.selection = TextSelection.fromPosition(
+                        TextPosition(offset: textController.text.length));
                   } else {
                     validate = newValue;
                   }
@@ -189,7 +195,6 @@ class _InputFormState extends State<InputForm> {
                 }
               },
               decoration: InputDecoration(
-                // counter: Offstage(),
                 counter: SizedBox(
                   height: 0,
                 ),
