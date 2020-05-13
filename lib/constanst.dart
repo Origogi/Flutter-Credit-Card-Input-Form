@@ -4,10 +4,15 @@ const kCardNumberTextStyle = TextStyle(
     color: Colors.white,
     fontFamily: 'U and I',
     fontWeight: FontWeight.bold,
-    fontSize: 24);
+    letterSpacing: 1.5,
+    fontSize: 25);
 
-const kCardDefaultTextStyle =
-    TextStyle(color: Colors.grey, fontFamily: 'U and I', fontSize: 25);
+const kCardDefaultTextStyle = TextStyle(
+  color: Colors.grey,
+  fontFamily: 'U and I',
+  fontSize: 25,
+  letterSpacing: 1,
+);
 
 const kCVCTextStyle = TextStyle(
     color: Colors.black,
@@ -36,6 +41,7 @@ const kDefaultNameTextStyle = TextStyle(
 
 const kValidtextStyle = TextStyle(
   fontSize: 15,
+  letterSpacing: 2,
   color: Colors.white,
   fontFamily: 'U and I',
 );
@@ -55,4 +61,3 @@ const kSignTextStyle = TextStyle(
 enum InputState { number, name, validate, CVV }
 
 enum CardCompany { VISA, MASTER, AMERICAN_EXPRESS, DISCOVER, OTHER }
-

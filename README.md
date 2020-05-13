@@ -79,6 +79,7 @@ For use state management
 - [x] When entering card number or expiration date in TextField, additional delimiter ("", /) is displayed.
 - [x] Support the more card company logo(Visa, Master, Amex, Discover)
 - [x] Add `Prev` button
-- [ ] Resize yellow border
+- [x] Resize yellow border
 - [ ] Make callback interface
 - [ ] Release Dart package
+

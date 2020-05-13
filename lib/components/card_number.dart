@@ -14,9 +14,9 @@ class CardNumber extends StatelessWidget {
     String defaultNumber = '';
 
     for (int i = 1; i <= 16 - number.length; i++) {
-      defaultNumber = 'x' + defaultNumber;
+      defaultNumber = 'X' + defaultNumber;
       if (i % 4 == 0 && i != 16) {
-        defaultNumber = '  ' + defaultNumber;
+        defaultNumber = ' ' + defaultNumber;
       }
     }
     String cardNumber = '';
@@ -24,7 +24,7 @@ class CardNumber extends StatelessWidget {
     for (int i = 1; i <= number.length; i++) {
       cardNumber = cardNumber + number[i - 1];
       if (i % 4 == 0 && i != number.length) {
-        cardNumber = cardNumber + '  ';
+        cardNumber = cardNumber + ' ';
       }
     }
 

@@ -14,9 +14,11 @@ class YellowBorder extends StatelessWidget {
     final align = getAlign(currentState);
     final height = getHeight(currentState);
     final width = getWidth(context, currentState);
+    final margin = getMargin(currentState);
 
     return AnimatedAlign(
       child: AnimatedContainer(
+        margin: margin,
         duration: Duration(milliseconds: 150),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
@@ -71,7 +73,9 @@ class YellowBorder extends StatelessWidget {
     var width = 330.0;
     switch (currentState) {
       case InputState.number:
-        width = textSize('1234  5678  1234  1234', kCardNumberTextStyle).width + 40;
+        width =
+            textSize('XXXX XXXX XXXX XXXX', kCardDefaultTextStyle).width +
+                10;
         break;
       case InputState.name:
         String name = Provider.of<CardNameProvider>(context).cardName;
@@ -79,13 +83,32 @@ class YellowBorder extends StatelessWidget {
           name = 'NAME SURNAME';
         }
 
-        width = textSize(name, kNametextStyle).width + 25;
+        width = textSize(name, kNametextStyle).width + 10;
         break;
       case InputState.CVV:
       case InputState.validate:
-        width = textSize('MM/YY', kNametextStyle).width + 20;
+        width = textSize('MM/YY', kNametextStyle).width + 10;
         break;
     }
     return width;
+  }
+
+  getMargin(InputState currentState) {
+    var lefrMargin = 0.0;
+    var rightMargin = 0.0;
+    switch (currentState) {
+      case InputState.number:
+        break;
+      case InputState.name:
+        lefrMargin = 2.5;
+        break;
+      case InputState.CVV:
+        break;
+      case InputState.validate:
+        rightMargin = 3;
+
+        break;
+    }
+    return EdgeInsets.only(left: lefrMargin, right: rightMargin);
   }
 }
