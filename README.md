@@ -78,7 +78,9 @@ For use state management
 
 ## ToDo
 
-- [ ] Release Dart package (until May)
+- [x] When entering card number or expiration date in TextField, additional delimiter ("", /) is displayed.
+- [ ] Support the more card company logo(Visa, Master, Amex, Discover)
+- [ ] Release Dart package
 
 
 ## Note
@@ -88,4 +90,3 @@ For use state management
 -----------------------------------------
 
 - This code does not check all card companies(only Visa and master). Modify the `card_logo.dart` file to support more card companies
-
