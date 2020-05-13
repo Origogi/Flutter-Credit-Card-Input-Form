@@ -30,6 +30,9 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final currentState =
+        Provider.of<StateProvider>(context, listen: true).getCurrentState();
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -51,25 +54,45 @@ class _MainScreenState extends State<MainScreen> {
             InputViewPager(
               pageController: pageController,
             ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: const EdgeInsets.only(top : 10, right: 22),
-                child: RoundButton(onTap: () {
-                  pageController.nextPage(
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.easeIn);
+            Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
+              RoundButton(
+                  buttonTitle: "Prev",
+                  onTap: () {
+                    if (InputState.number != currentState) {
+                      pageController.previousPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeIn);
+                    }
 
-                  if (InputState.validate ==
-                      Provider.of<StateProvider>(context, listen: false)
-                          .getCurrentState()) {
-                    cardKey.currentState.toggleCard();
-                  }
-                  Provider.of<StateProvider>(context, listen: false)
-                      .moveNextState();
-                }),
+                    if (InputState.CVV == currentState) {
+                      cardKey.currentState.toggleCard();
+                    }
+                    Provider.of<StateProvider>(context, listen: false)
+                        .movePrevState();
+                  }),
+              SizedBox(
+                width: 10,
               ),
-            ),
+              RoundButton(
+                  buttonTitle: currentState != InputState.CVV ? "Next" : "Done",
+                  onTap: () {
+                    if (InputState.CVV != currentState) {
+                      pageController.nextPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeIn);
+                    }
+
+                    if (InputState.validate == currentState) {
+                      cardKey.currentState.toggleCard();
+                    }
+
+                    Provider.of<StateProvider>(context, listen: false)
+                        .moveNextState();
+                  }),
+              SizedBox(
+                width: 25,
+              )
+            ])
           ],
         ),
       ),

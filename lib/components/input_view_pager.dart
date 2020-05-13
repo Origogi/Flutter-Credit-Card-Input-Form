@@ -34,7 +34,7 @@ class InputViewPager extends StatelessWidget {
     });
 
     return Container(
-        height: 110,
+        height: 100,
         child: PageView.builder(
             physics: NeverScrollableScrollPhysics(),
             controller: pageController,

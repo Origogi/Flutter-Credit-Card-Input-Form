@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_credit_card/constanst.dart';
-import 'package:flutter_credit_card/provider/state_provider.dart';
-import 'package:provider/provider.dart';
+
 
 class RoundButton extends StatelessWidget {
   final Function onTap;
+  final buttonTitle;
 
-  RoundButton({this.onTap});
+  RoundButton({this.onTap, this.buttonTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -32,20 +31,18 @@ class RoundButton extends StatelessWidget {
       ),
       child: InkWell(
         onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-          child: Consumer<StateProvider>(
-            builder: (context, notifier, child) {
-              return Text(
-                notifier.getCurrentState() == InputState.CVV ? 'Done' : 'Next',
+        child: Container(
+            width: 75,
+            height: 40,
+            child: Center(
+              child: Text(
+                buttonTitle,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 15),
-              );
-            },
-          ),
-        ),
+              ),
+            )),
       ),
     );
   }
