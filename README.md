@@ -81,6 +81,7 @@ For use state management
 - [x] Add `Prev` button
 - [x] Resize yellow border
 - [x] Add button animation
-- [ ] Add `Done` process
-- [ ] Make callback interface
+- [x] Add `Done` process
+- [x] Make callback interface
+- [ ] Add lottie animation
 - [ ] Release Dart package
