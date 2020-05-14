@@ -30,7 +30,11 @@ class InputViewPager extends StatelessWidget {
   Widget build(BuildContext context) {
     Provider.of<StateProvider>(context).addListener(() {
       int index = Provider.of<StateProvider>(context).getCurrentState().index;
-      FocusScope.of(context).requestFocus(focusNodes[index]);
+
+      if (index < titleMap.length) {
+        FocusScope.of(context).requestFocus(focusNodes[index]);
+      }
+      
     });
 
     return Container(
@@ -198,7 +202,6 @@ class _InputFormState extends State<InputForm> {
                 counter: SizedBox(
                   height: 0,
                 ),
-
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 2.0, horizontal: 10),
                 border: OutlineInputBorder(

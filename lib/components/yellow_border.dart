@@ -46,6 +46,7 @@ class YellowBorder extends StatelessWidget {
         break;
       case InputState.CVV:
       case InputState.VALIDATE:
+      case InputState.DONE:
         align = Alignment.bottomRight;
         break;
     }
@@ -63,6 +64,7 @@ class YellowBorder extends StatelessWidget {
         break;
       case InputState.CVV:
       case InputState.VALIDATE:
+      case InputState.DONE:
         height = textSize('12/12', kNametextStyle).height + 15;
         break;
     }
@@ -74,8 +76,7 @@ class YellowBorder extends StatelessWidget {
     switch (currentState) {
       case InputState.NUMBER:
         width =
-            textSize('XXXX XXXX XXXX XXXX', kCardDefaultTextStyle).width +
-                10;
+            textSize('XXXX XXXX XXXX XXXX', kCardDefaultTextStyle).width + 10;
         break;
       case InputState.NAME:
         String name = Provider.of<CardNameProvider>(context).cardName;
@@ -103,6 +104,7 @@ class YellowBorder extends StatelessWidget {
         lefrMargin = 2.5;
         break;
       case InputState.CVV:
+      case InputState.DONE:
         break;
       case InputState.VALIDATE:
         rightMargin = 3;

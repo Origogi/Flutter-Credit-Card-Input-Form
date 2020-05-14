@@ -58,6 +58,6 @@ const kSignTextStyle = TextStyle(
   fontFamily: 'Satisfy',
 );
 
-enum InputState { NUMBER, NAME, VALIDATE, CVV }
+enum InputState { NUMBER, NAME, VALIDATE, CVV, DONE }
 
 enum CardCompany { VISA, MASTER, AMERICAN_EXPRESS, DISCOVER, OTHER }

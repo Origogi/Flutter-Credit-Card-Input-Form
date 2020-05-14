@@ -8,7 +8,8 @@ class StateProvider with ChangeNotifier {
     InputState.NUMBER,
     InputState.NAME,
     InputState.VALIDATE,
-    InputState.CVV
+    InputState.CVV,
+    InputState.DONE
   ];
 
   var currentIndex = 0;
@@ -23,7 +24,7 @@ class StateProvider with ChangeNotifier {
   }
 
   void movePrevState() {
- if (currentIndex > 0) {
+    if (currentIndex > 0) {
       currentIndex--;
       _currentState = _states[currentIndex];
       print(_currentState);

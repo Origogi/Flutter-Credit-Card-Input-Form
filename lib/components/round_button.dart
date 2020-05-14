@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/constants/constanst.dart';
+import 'package:flutter_credit_card/provider/state_provider.dart';
+import 'package:provider/provider.dart';
 
 class RoundButton extends StatefulWidget {
   final Function onTap;
@@ -19,12 +22,28 @@ class _RoundButtonState extends State<RoundButton> {
       onTap: widget.onTap,
       onTapDown: (_) {
         print("tapDown");
+
+        final currentState =
+            Provider.of<StateProvider>(context, listen: false).getCurrentState();
+
+        if (currentState == InputState.DONE) {
+          return;
+        }
+
         setState(() {
           pressed = true;
         });
       },
+
       onTapUp: (_) {
         print("onTapUp");
+        final currentState =
+            Provider.of<StateProvider>(context, listen: false).getCurrentState();
+
+        if (currentState == InputState.DONE) {
+          return;
+        }
+
         setState(() {
           pressed = false;
         });
