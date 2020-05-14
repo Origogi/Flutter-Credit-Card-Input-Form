@@ -4,7 +4,7 @@ import 'package:flutter_credit_card/provider/state_provider.dart';
 import 'package:flutter_credit_card/util/util.dart';
 import 'package:provider/provider.dart';
 
-import '../constanst.dart';
+import 'package:flutter_credit_card/constants/constanst.dart';
 
 class YellowBorder extends StatelessWidget {
   @override
@@ -38,14 +38,14 @@ class YellowBorder extends StatelessWidget {
   Alignment getAlign(currentState) {
     var align = Alignment.centerLeft;
     switch (currentState) {
-      case InputState.number:
+      case InputState.NUMBER:
         align = Alignment.centerLeft;
         break;
-      case InputState.name:
+      case InputState.NAME:
         align = Alignment.bottomLeft;
         break;
       case InputState.CVV:
-      case InputState.validate:
+      case InputState.VALIDATE:
         align = Alignment.bottomRight;
         break;
     }
@@ -55,14 +55,14 @@ class YellowBorder extends StatelessWidget {
   double getHeight(InputState currentState) {
     var height = 0.0;
     switch (currentState) {
-      case InputState.number:
+      case InputState.NUMBER:
         height = textSize('1234  5678  1234', kCardNumberTextStyle).height + 15;
         break;
-      case InputState.name:
+      case InputState.NAME:
         height = textSize('hello world', kNametextStyle).height + 15;
         break;
       case InputState.CVV:
-      case InputState.validate:
+      case InputState.VALIDATE:
         height = textSize('12/12', kNametextStyle).height + 15;
         break;
     }
@@ -72,12 +72,12 @@ class YellowBorder extends StatelessWidget {
   double getWidth(context, currentState) {
     var width = 330.0;
     switch (currentState) {
-      case InputState.number:
+      case InputState.NUMBER:
         width =
             textSize('XXXX XXXX XXXX XXXX', kCardDefaultTextStyle).width +
                 10;
         break;
-      case InputState.name:
+      case InputState.NAME:
         String name = Provider.of<CardNameProvider>(context).cardName;
         if (name.isEmpty) {
           name = 'NAME SURNAME';
@@ -86,7 +86,7 @@ class YellowBorder extends StatelessWidget {
         width = textSize(name, kNametextStyle).width + 10;
         break;
       case InputState.CVV:
-      case InputState.validate:
+      case InputState.VALIDATE:
         width = textSize('MM/YY', kNametextStyle).width + 10;
         break;
     }
@@ -97,14 +97,14 @@ class YellowBorder extends StatelessWidget {
     var lefrMargin = 0.0;
     var rightMargin = 0.0;
     switch (currentState) {
-      case InputState.number:
+      case InputState.NUMBER:
         break;
-      case InputState.name:
+      case InputState.NAME:
         lefrMargin = 2.5;
         break;
       case InputState.CVV:
         break;
-      case InputState.validate:
+      case InputState.VALIDATE:
         rightMargin = 3;
 
         break;

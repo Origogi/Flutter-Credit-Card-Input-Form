@@ -80,6 +80,7 @@ For use state management
 - [x] Support the more card company logo(Visa, Master, Amex, Discover)
 - [x] Add `Prev` button
 - [x] Resize yellow border
+- [x] Add button animation
+- [ ] Add `Done` process
 - [ ] Make callback interface
 - [ ] Release Dart package
-

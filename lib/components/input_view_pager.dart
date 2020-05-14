@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_credit_card/constanst.dart';
+import 'package:flutter_credit_card/constants/constanst.dart';
 import 'package:flutter_credit_card/provider/card_cvv_provider.dart';
 import 'package:flutter_credit_card/provider/card_name_provider.dart';
 import 'package:flutter_credit_card/provider/card_valid_provider.dart';
@@ -92,13 +92,13 @@ class _InputFormState extends State<InputForm> {
 
     widget.pageController.addListener(onChange);
 
-    if (widget.index == InputState.number.index) {
+    if (widget.index == InputState.NUMBER.index) {
       maxLength = 19;
       textInputType = TextInputType.number;
-    } else if (widget.index == InputState.name.index) {
+    } else if (widget.index == InputState.NAME.index) {
       maxLength = 20;
       textInputType = TextInputType.text;
-    } else if (widget.index == InputState.validate.index) {
+    } else if (widget.index == InputState.VALIDATE.index) {
       maxLength = 5;
       textInputType = TextInputType.number;
     } else if (widget.index == InputState.CVV.index) {
@@ -136,7 +136,7 @@ class _InputFormState extends State<InputForm> {
               keyboardType: textInputType,
               maxLength: maxLength,
               onChanged: (String newValue) {
-                if (widget.index == InputState.number.index) {
+                if (widget.index == InputState.NUMBER.index) {
                   print(newValue);
 
                   if (newValue.isNotEmpty &&
@@ -171,9 +171,9 @@ class _InputFormState extends State<InputForm> {
                   }
 
                   Provider.of<CardNumberProvider>(context).setNumber(newValue);
-                } else if (widget.index == InputState.name.index) {
+                } else if (widget.index == InputState.NAME.index) {
                   Provider.of<CardNameProvider>(context).setName(newValue);
-                } else if (widget.index == InputState.validate.index) {
+                } else if (widget.index == InputState.VALIDATE.index) {
                   String validate;
                   if (newValue.length == 3) {
                     if (newValue.contains("/")) {

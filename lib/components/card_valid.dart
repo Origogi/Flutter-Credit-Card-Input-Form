@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/provider/card_valid_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_credit_card/constanst.dart';
+import 'package:flutter_credit_card/constants/constanst.dart';
 
 class CardValid extends StatelessWidget {
   @override

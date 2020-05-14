@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/constants/constanst.dart';
 import 'package:flutter_credit_card/provider/card_number_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../constanst.dart';
 
 class CardLogo extends StatelessWidget {
   final master = Image.asset(
