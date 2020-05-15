@@ -18,7 +18,6 @@ class StateProvider with ChangeNotifier {
     if (currentIndex < _states.length - 1) {
       currentIndex++;
       _currentState = _states[currentIndex];
-      print(_currentState);
       notifyListeners();
     }
   }
@@ -27,7 +26,6 @@ class StateProvider with ChangeNotifier {
     if (currentIndex > 0) {
       currentIndex--;
       _currentState = _states[currentIndex];
-      print(_currentState);
       notifyListeners();
     }
   }

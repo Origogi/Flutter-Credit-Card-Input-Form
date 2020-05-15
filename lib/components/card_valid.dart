@@ -37,7 +37,6 @@ class CardValid extends StatelessWidget {
         break;
     }
 
-    print(defaultCardValid);
 
     return Container(
         child: Row(

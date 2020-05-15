@@ -141,7 +141,6 @@ class _InputFormState extends State<InputForm> {
               maxLength: maxLength,
               onChanged: (String newValue) {
                 if (widget.index == InputState.NUMBER.index) {
-                  print(newValue);
 
                   if (newValue.isNotEmpty &&
                       newValue[newValue.length - 1] == ' ') {
