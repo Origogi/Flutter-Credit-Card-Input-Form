@@ -1,4 +1,4 @@
-package com.example.flutter_credit_card
+package com.origogi.creditcard
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
