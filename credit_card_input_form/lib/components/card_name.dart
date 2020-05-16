@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 class CardName extends StatelessWidget {
 
-  String defaultName = 'NAME SURNAME';
+  final defaultName = 'NAME SURNAME';
 
   @override
   Widget build(BuildContext context) {
