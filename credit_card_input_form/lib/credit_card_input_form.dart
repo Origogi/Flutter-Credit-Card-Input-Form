@@ -91,14 +91,19 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: FlipCard(
-            flipOnTouch: false,
+            speed: 300,
+            flipOnTouch: currentState == InputState.DONE,
             key: cardKey,
             front: FrondCardView(),
             back: BackCardView(),
           ),
         ),
-        InputViewPager(
-          pageController: pageController,
+        AnimatedOpacity(
+          opacity: currentState == InputState.DONE ? 0 : 1,
+          duration: Duration(milliseconds: 500),
+          child: InputViewPager(
+            pageController: pageController,
+          ),
         ),
         Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
           AnimatedOpacity(
@@ -139,7 +144,6 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
                     ? "Done"
                     : "Next",
                 onTap: () {
-
                   if (InputState.CVV != currentState) {
                     pageController.nextPage(
                         duration: Duration(milliseconds: 300),

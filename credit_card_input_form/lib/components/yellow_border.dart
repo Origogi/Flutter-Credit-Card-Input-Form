@@ -16,22 +16,26 @@ class YellowBorder extends StatelessWidget {
     final width = getWidth(context, currentState);
     final margin = getMargin(currentState);
 
-    return AnimatedAlign(
-      child: AnimatedContainer(
-        margin: margin,
-        duration: Duration(milliseconds: 150),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(
-            color: Colors.yellow, //                   <--- border color
-            width: 1.0,
-          ),
-        ),
-        height: height,
-        width: width,
-      ),
-      alignment: align,
+    return AnimatedOpacity(
+      opacity: currentState == InputState.DONE ? 0 : 1,
       duration: Duration(milliseconds: 300),
+      child: AnimatedAlign(
+        child: AnimatedContainer(
+          margin: margin,
+          duration: Duration(milliseconds: 150),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(
+              color: Colors.yellow, //                   <--- border color
+              width: 1.0,
+            ),
+          ),
+          height: height,
+          width: width,
+        ),
+        alignment: align,
+        duration: Duration(milliseconds: 300),
+      ),
     );
   }
 

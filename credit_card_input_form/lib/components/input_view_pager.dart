@@ -112,9 +112,6 @@ class _InputFormState extends State<InputForm> {
     } else if (widget.index == InputState.CVV.index) {
       maxLength = 3;
       textInputType = TextInputType.number;
-    } else {
-      textController.clear();
-      widget.focusNode.unfocus();
     }
   }
 
@@ -127,14 +124,7 @@ class _InputFormState extends State<InputForm> {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<StateProvider>(context).addListener(() {
-      if (Provider.of<StateProvider>(context).getCurrentState() ==
-          InputState.DONE) {
-        textController.clear();
-        FocusScope.of(context).requestFocus(new FocusNode());
-      }
-    });
-
+  
     return Opacity(
       opacity: opacicy,
       child: Container(
