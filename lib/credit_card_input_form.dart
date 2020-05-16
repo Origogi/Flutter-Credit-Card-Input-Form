@@ -1,16 +1,16 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_credit_card/components/back_card_view.dart';
-import 'package:flutter_credit_card/components/front_card_view.dart';
-import 'package:flutter_credit_card/components/input_view_pager.dart';
-import 'package:flutter_credit_card/components/round_button.dart';
-import 'package:flutter_credit_card/constants/constanst.dart';
-import 'package:flutter_credit_card/model/card_info.dart';
-import 'package:flutter_credit_card/provider/card_cvv_provider.dart';
-import 'package:flutter_credit_card/provider/card_name_provider.dart';
-import 'package:flutter_credit_card/provider/card_number_provider.dart';
-import 'package:flutter_credit_card/provider/card_valid_provider.dart';
-import 'package:flutter_credit_card/provider/state_provider.dart';
+import 'package:credit_card_input_form/components/back_card_view.dart';
+import 'package:credit_card_input_form/components/front_card_view.dart';
+import 'package:credit_card_input_form/components/input_view_pager.dart';
+import 'package:credit_card_input_form/components/round_button.dart';
+import 'package:credit_card_input_form/constants/constanst.dart';
+import 'package:credit_card_input_form/model/card_info.dart';
+import 'package:credit_card_input_form/provider/card_cvv_provider.dart';
+import 'package:credit_card_input_form/provider/card_name_provider.dart';
+import 'package:credit_card_input_form/provider/card_number_provider.dart';
+import 'package:credit_card_input_form/provider/card_valid_provider.dart';
+import 'package:credit_card_input_form/provider/state_provider.dart';
 import 'package:provider/provider.dart';
 
 typedef CardInfoCallback = void Function(

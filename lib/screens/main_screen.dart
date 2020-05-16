@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_credit_card/widget/credit_card_input_form.dart';
+import '../credit_card_input_form.dart';
+
 
 class MainScreen extends StatefulWidget {
   @override

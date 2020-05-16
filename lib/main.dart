@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_credit_card/screens/main_screen.dart';
+import 'package:credit_card_input_form/screens/main_screen.dart';
 
 void main() => runApp(MyApp());
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_credit_card/constants/constanst.dart';
-import 'package:flutter_credit_card/provider/card_number_provider.dart';
+import 'package:credit_card_input_form/constants/constanst.dart';
+import 'package:credit_card_input_form/provider/card_number_provider.dart';
 import 'package:provider/provider.dart';
 
 

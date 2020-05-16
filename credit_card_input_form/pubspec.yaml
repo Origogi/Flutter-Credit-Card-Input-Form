@@ -1,0 +1,48 @@
+name: credit_card_input_form
+description: A new flutter plugin project.
+version: 0.0.1
+author:
+homepage:
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  provider: ^3.0.0+1
+  flip_card: ^0.4.4
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  plugin:
+    platforms:
+      android:
+        package: com.origogi.credit_card_input_form
+        pluginClass: CreditCardInputFormPlugin
+      ios:
+        pluginClass: CreditCardInputFormPlugin
+
+  fonts:
+    - family: U and I
+      fonts:
+        - asset: fonts/fontYouandiModernTR.ttf
+    - family: Satisfy
+      fonts:
+        - asset: fonts/Satisfy-Regular.ttf
+
+  assets: 
+    - images/
+
+
+
+
+
