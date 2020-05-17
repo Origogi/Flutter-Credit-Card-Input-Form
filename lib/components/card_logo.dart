@@ -3,25 +3,16 @@ import 'package:credit_card_input_form/constants/constanst.dart';
 import 'package:credit_card_input_form/provider/card_number_provider.dart';
 import 'package:provider/provider.dart';
 
-
 class CardLogo extends StatelessWidget {
-  final master = Image.asset(
-    'images/mastercard.png',
-    width: 50,
-  );
-  final visa = Image.asset(
-    'images/visacard.png',
-    width: 50,
-  );
-  final discover = Image.asset(
-    'images/discover.png',
-    width: 50,
-  );
+  final master = Image.asset('images/mastercard.png',
+      width: 50, package: 'credit_card_input_form');
+  final visa = Image.asset('images/visacard.png',
+      width: 50, package: 'credit_card_input_form');
+  final discover = Image.asset('images/discover.png',
+      width: 50, package: 'credit_card_input_form');
 
-  final amex = Image.asset(
-    'images/amex.png',
-    width: 50,
-  );
+  final amex = Image.asset('images/amex.png',
+      width: 50, package: 'credit_card_input_form');
 
   final others = Container();
 

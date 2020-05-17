@@ -9,22 +9,15 @@ class CardNumber extends StatelessWidget {
   Widget build(BuildContext context) {
     Provider.of<CardNumberProvider>(context).cardNumber;
 
-    String number = Provider.of<CardNumberProvider>(context).cardNumber;
-    number = number.replaceAll(" ", "");
+    String cardNumber = Provider.of<CardNumberProvider>(context).cardNumber;
     String defaultNumber = '';
 
-    for (int i = 1; i <= 16 - number.length; i++) {
+    final numberLength = cardNumber.replaceAll(" ", "").length;
+
+    for (int i = 1; i <= 16 - numberLength; i++) {
       defaultNumber = 'X' + defaultNumber;
       if (i % 4 == 0 && i != 16) {
         defaultNumber = ' ' + defaultNumber;
-      }
-    }
-    String cardNumber = '';
-
-    for (int i = 1; i <= number.length; i++) {
-      cardNumber = cardNumber + number[i - 1];
-      if (i % 4 == 0 && i != number.length) {
-        cardNumber = cardNumber + ' ';
       }
     }
 

@@ -1,4 +1,4 @@
-![á„‰á…³á„á…³á„…á…µá†«á„‰á…£á†º 2020-03-13 á„‹á…©á„’á…® 1 48 51](https://user-images.githubusercontent.com/35194820/76590756-8c4ed180-6531-11ea-89f5-382a9553541e.png)
+![?????????? 2020-03-13 ???? 1 48 51](https://user-images.githubusercontent.com/35194820/76590756-8c4ed180-6531-11ea-89f5-382a9553541e.png)
 
 <div align="center">
 	<a href="https://flutter.io">
@@ -20,7 +20,7 @@ https://dribbble.com/shots/6440077-Add-a-New-Credit-Card-alternate-flow
 
 </div><br>
 
-## Real output (ì‹¤ì œ ê²°ê³¼ë¬¼)
+## Real output (½ÇÁ¦ °á°ú¹°)
 
 <div align="center">
 
@@ -32,37 +32,37 @@ https://dribbble.com/shots/6440077-Add-a-New-Credit-Card-alternate-flow
 
 ```
 lib
-â”œâ”€ components
-â”‚  â”œâ”€ back_card_view.dart
-â”‚  â”œâ”€ card_cvv.dart
-â”‚  â”œâ”€ card_logo.dart
-â”‚  â”œâ”€ card_name.dart
-â”‚  â”œâ”€ card_number.dart
-â”‚  â”œâ”€ card_sign.dart
-â”‚  â”œâ”€ card_valid.dart
-â”‚  â”œâ”€ front_card_view.dart
-â”‚  â”œâ”€ input_view_pager.dart
-â”‚  â”œâ”€ my_appbar.dart
-â”‚  â”œâ”€ round_button.dart
-â”‚  â””â”€ yellow_border.dart
-â”œâ”€ constanst.dart
-â”œâ”€ main.dart
-â”œâ”€ provider
-â”‚  â”œâ”€ card_cvv_provider.dart
-â”‚  â”œâ”€ card_name_provider.dart
-â”‚  â”œâ”€ card_number_provider.dart
-â”‚  â”œâ”€ card_valid_provider.dart
-â”‚  â””â”€ state_provider.dart
-â”œâ”€ screens
-â”‚  â””â”€ MainScreen.dart
-â””â”€ util
-   â””â”€ util.dart
+¦§¦¡ components
+¦¢  ¦§¦¡ back_card_view.dart
+¦¢  ¦§¦¡ card_cvv.dart
+¦¢  ¦§¦¡ card_logo.dart
+¦¢  ¦§¦¡ card_name.dart
+¦¢  ¦§¦¡ card_number.dart
+¦¢  ¦§¦¡ card_sign.dart
+¦¢  ¦§¦¡ card_valid.dart
+¦¢  ¦§¦¡ front_card_view.dart
+¦¢  ¦§¦¡ input_view_pager.dart
+¦¢  ¦§¦¡ my_appbar.dart
+¦¢  ¦§¦¡ round_button.dart
+¦¢  ¦¦¦¡ yellow_border.dart
+¦§¦¡ constanst.dart
+¦§¦¡ main.dart
+¦§¦¡ provider
+¦¢  ¦§¦¡ card_cvv_provider.dart
+¦¢  ¦§¦¡ card_name_provider.dart
+¦¢  ¦§¦¡ card_number_provider.dart
+¦¢  ¦§¦¡ card_valid_provider.dart
+¦¢  ¦¦¦¡ state_provider.dart
+¦§¦¡ screens
+¦¢  ¦¦¦¡ MainScreen.dart
+¦¦¦¡ util
+   ¦¦¦¡ util.dart
 
 ```
 
 ## 3rd party library
 
-### Flip card 
+### Flip card
 
 https://pub.dev/packages/flip_card
 
@@ -83,5 +83,4 @@ For use state management
 - [x] Add button animation
 - [x] Add `Done` process
 - [x] Make callback interface
-- [ ] Add lottie animation
 - [ ] Release Dart package

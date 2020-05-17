@@ -4,6 +4,7 @@ import 'package:credit_card_input_form/provider/card_cvv_provider.dart';
 import 'package:credit_card_input_form/provider/card_name_provider.dart';
 import 'package:credit_card_input_form/provider/card_valid_provider.dart';
 import 'package:credit_card_input_form/provider/state_provider.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:credit_card_input_form/provider/card_number_provider.dart';
 
@@ -31,10 +32,12 @@ class InputViewPager extends StatelessWidget {
     Provider.of<StateProvider>(context).addListener(() {
       int index = Provider.of<StateProvider>(context).getCurrentState().index;
 
-      if (index < titleMap.length) {
+      if (index < focusNodes.length) {
         FocusScope.of(context).requestFocus(focusNodes[index]);
+      } else {
+        FocusScope.of(context).unfocus();
+        SystemChannels.textInput.invokeMethod('TextInput.hide');
       }
-      
     });
 
     return Container(
@@ -86,6 +89,8 @@ class _InputFormState extends State<InputForm> {
     });
   }
 
+  String value;
+
   @override
   void initState() {
     super.initState();
@@ -118,8 +123,25 @@ class _InputFormState extends State<InputForm> {
     super.dispose();
   }
 
+  var isInit = false;
+
   @override
   Widget build(BuildContext context) {
+    String textValue = "";
+
+    if (widget.index == InputState.NUMBER.index) {
+      textValue =
+          Provider.of<CardNumberProvider>(context, listen: false).cardNumber;
+    } else if (widget.index == InputState.NAME.index) {
+      textValue =
+          Provider.of<CardNameProvider>(context, listen: false).cardName;
+    } else if (widget.index == InputState.VALIDATE.index) {
+      textValue =
+          Provider.of<CardValidProvider>(context, listen: false).cardValid;
+    } else if (widget.index == InputState.CVV.index) {
+      textValue = Provider.of<CardCVVProvider>(context).cardCVV;
+    }
+
     return Opacity(
       opacity: opacicy,
       child: Container(
@@ -135,64 +157,17 @@ class _InputFormState extends State<InputForm> {
             ),
             TextField(
               autofocus: widget.index == 0,
-              controller: textController,
+              controller: textController..text = textValue,
               focusNode: widget.focusNode,
               keyboardType: textInputType,
               maxLength: maxLength,
               onChanged: (String newValue) {
                 if (widget.index == InputState.NUMBER.index) {
-
-                  if (newValue.isNotEmpty &&
-                      newValue[newValue.length - 1] == ' ') {
-                    textController.text =
-                        newValue.substring(0, newValue.length - 1);
-                    textController.selection = TextSelection.fromPosition(
-                        TextPosition(offset: textController.text.length));
-                    Provider.of<CardNumberProvider>(context)
-                        .setNumber(newValue);
-
-                    return;
-                  }
-
-                  String cardNumber = '';
-
-                  List<String> numbers4Digits = newValue.split(" ");
-
-                  if (numbers4Digits.last.length > 4) {
-                    String last4Number = numbers4Digits.removeLast();
-                    numbers4Digits.add(last4Number.substring(0, 4));
-                    numbers4Digits.add(last4Number.substring(4));
-
-                    for (String number in numbers4Digits) {
-                      cardNumber = cardNumber + " " + number;
-                    }
-
-                    cardNumber = cardNumber.substring(1);
-                    textController.text = cardNumber;
-                    textController.selection = TextSelection.fromPosition(
-                        TextPosition(offset: textController.text.length));
-                  }
-
                   Provider.of<CardNumberProvider>(context).setNumber(newValue);
                 } else if (widget.index == InputState.NAME.index) {
                   Provider.of<CardNameProvider>(context).setName(newValue);
                 } else if (widget.index == InputState.VALIDATE.index) {
-                  String validate;
-                  if (newValue.length == 3) {
-                    if (newValue.contains("/")) {
-                      validate = newValue.substring(0, 2);
-                    } else {
-                      validate = newValue.substring(0, 2) +
-                          "/" +
-                          newValue.substring(2);
-                    }
-                    textController.text = validate;
-                    textController.selection = TextSelection.fromPosition(
-                        TextPosition(offset: textController.text.length));
-                  } else {
-                    validate = newValue;
-                  }
-                  Provider.of<CardValidProvider>(context).setValid(validate);
+                  Provider.of<CardValidProvider>(context).setValid(newValue);
                 } else if (widget.index == InputState.CVV.index) {
                   Provider.of<CardCVVProvider>(context).setCVV(newValue);
                 }

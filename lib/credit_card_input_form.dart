@@ -18,7 +18,7 @@ typedef CardInfoCallback = void Function(
 
 class CreditCardInputForm extends StatelessWidget {
   CreditCardInputForm({this.onStateChange});
-  
+
   final Function onStateChange;
 
   @override
@@ -91,18 +91,26 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: FlipCard(
-            flipOnTouch: false,
+            speed: 300,
+            flipOnTouch: currentState == InputState.DONE,
             key: cardKey,
             front: FrondCardView(),
             back: BackCardView(),
           ),
         ),
-        InputViewPager(
-          pageController: pageController,
+        AnimatedOpacity(
+          opacity: currentState == InputState.DONE ? 0 : 1,
+          duration: Duration(milliseconds: 500),
+          child: InputViewPager(
+            pageController: pageController,
+          ),
         ),
         Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
           AnimatedOpacity(
-            opacity: currentState == InputState.NUMBER ? 0 : 1,
+            opacity: currentState == InputState.NUMBER ||
+                    currentState == InputState.DONE
+                ? 0
+                : 1,
             duration: Duration(milliseconds: 500),
             child: RoundButton(
                 buttonTitle: "Prev",
@@ -127,29 +135,29 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
           SizedBox(
             width: 10,
           ),
-          RoundButton(
-              buttonTitle: currentState == InputState.CVV ||
-                      currentState == InputState.DONE
-                  ? "Done"
-                  : "Next",
-              onTap: () {
-                if (InputState.DONE == currentState) {
-                  return;
-                }
+          AnimatedOpacity(
+            opacity: currentState == InputState.DONE ? 0 : 1,
+            duration: Duration(milliseconds: 500),
+            child: RoundButton(
+                buttonTitle: currentState == InputState.CVV ||
+                        currentState == InputState.DONE
+                    ? "Done"
+                    : "Next",
+                onTap: () {
+                  if (InputState.CVV != currentState) {
+                    pageController.nextPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeIn);
+                  }
 
-                if (InputState.CVV != currentState) {
-                  pageController.nextPage(
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.easeIn);
-                }
+                  if (InputState.VALIDATE == currentState) {
+                    cardKey.currentState.toggleCard();
+                  }
 
-                if (InputState.VALIDATE == currentState) {
-                  cardKey.currentState.toggleCard();
-                }
-
-                Provider.of<StateProvider>(context, listen: false)
-                    .moveNextState();
-              }),
+                  Provider.of<StateProvider>(context, listen: false)
+                      .moveNextState();
+                }),
+          ),
           SizedBox(
             width: 25,
           )
