@@ -157,7 +157,13 @@ class _InputFormState extends State<InputForm> {
             ),
             TextField(
               autofocus: widget.index == 0,
-              controller: textController..text = textValue,
+              controller: textController
+                ..value = textController.value.copyWith(
+                  text: textValue,
+                  selection: TextSelection.fromPosition(
+                    TextPosition(offset: textValue.length),
+                  ),
+                ),
               focusNode: widget.focusNode,
               keyboardType: textInputType,
               maxLength: maxLength,
