@@ -1,4 +1,9 @@
-![?????????? 2020-03-13 ???? 1 48 51](https://user-images.githubusercontent.com/35194820/76590756-8c4ed180-6531-11ea-89f5-382a9553541e.png)
+
+<div align="center">
+
+<img src="https://user-images.githubusercontent.com/35194820/76590756-8c4ed180-6531-11ea-89f5-382a9553541e.png" width="600" >
+
+</div>
 
 <div align="center">
 	<a href="https://flutter.io">
@@ -10,17 +15,9 @@
 </a>
 </div><br>
 
-## Reference
+This package provides visually beautiful UX through animation of credit card information input form.
 
-<div align="center">
-
-![sample](https://user-images.githubusercontent.com/35194820/75879920-a157a080-5e5f-11ea-9763-823ad8f1a4e5.gif)
-
-https://dribbble.com/shots/6440077-Add-a-New-Credit-Card-alternate-flow
-
-</div><br>
-
-## Real output (실제 결과물)
+## Preview
 
 <div align="center">
 
@@ -28,37 +25,41 @@ https://dribbble.com/shots/6440077-Add-a-New-Credit-Card-alternate-flow
 
 </div>
 
-## Source Tree
+## Installing
 
-```
-lib
-├─ components
-│  ├─ back_card_view.dart
-│  ├─ card_cvv.dart
-│  ├─ card_logo.dart
-│  ├─ card_name.dart
-│  ├─ card_number.dart
-│  ├─ card_sign.dart
-│  ├─ card_valid.dart
-│  ├─ front_card_view.dart
-│  ├─ input_view_pager.dart
-│  ├─ my_appbar.dart
-│  ├─ round_button.dart
-│  └─ yellow_border.dart
-├─ constanst.dart
-├─ main.dart
-├─ provider
-│  ├─ card_cvv_provider.dart
-│  ├─ card_name_provider.dart
-│  ├─ card_number_provider.dart
-│  ├─ card_valid_provider.dart
-│  └─ state_provider.dart
-├─ screens
-│  └─ MainScreen.dart
-└─ util
-   └─ util.dart
+1. Add dependency to `pubspec.yaml`
 
+    *Get the latest version in the 'Installing' tab on pub.dartlang.org*
+    
+```dart
+dependencies:
+    credit_card_input_form: 1.0.0
 ```
+
+2. Import the package
+
+```dart
+import 'package:credit_card_input_form/credit_card_input_form.dart';
+```
+
+3. Adding `CreditCardInputForm`
+
+*With optional parameters*
+```dart
+ CreditCardInputForm(
+   cardHeight: 170,
+   frondCardColor: Colors.red,
+   backCardColor: Colors.blueAccent,
+   onStateChange: (currentState, cardInfo) {
+   print(currentState);
+   print(cardInfo);
+   },
+),
+```
+
+## How to use
+
+Check out the **example** app in the [example](example) directory or the 'Example' tab on pub.dartlang.org for a more complete example.
 
 ## 3rd party library
 
@@ -66,21 +67,15 @@ lib
 
 https://pub.dev/packages/flip_card
 
-For use card flip animation
+*For use card flip animation*
 
 ### Provider
 
 https://pub.dev/packages/provider
 
-For use state management
+*For use state management*
 
-## ToDo
+## Reference
 
-- [x] When entering card number or expiration date in TextField, additional delimiter ("", /) is displayed.
-- [x] Support the more card company logo(Visa, Master, Amex, Discover)
-- [x] Add `Prev` button
-- [x] Resize yellow border
-- [x] Add button animation
-- [x] Add `Done` process
-- [x] Make callback interface
-- [ ] Release Dart package
+This package's animation is inspired from from this [Dribbble](https://dribbble.com/shots/6440077-Add-a-New-Credit-Card-alternate-flow
+) art.

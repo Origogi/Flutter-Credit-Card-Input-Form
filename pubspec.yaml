@@ -1,8 +1,9 @@
 name: credit_card_input_form
-description: A new flutter plugin project.
-version: 0.0.1
-author:
-homepage:
+description: 
+This package provides visually beautiful UX through animation of credit card information input form.
+version: 1.0.0
+author: Origogi
+homepage: origogi.github.io
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
