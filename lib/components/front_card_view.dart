@@ -7,7 +7,6 @@ import 'card_number.dart';
 import 'card_valid.dart';
 
 class FrondCardView extends StatelessWidget {
-
   final height;
   final bgColor;
 
@@ -18,13 +17,9 @@ class FrondCardView extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 5),
       height: height,
-      decoration: BoxDecoration(
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: Colors.black54, blurRadius: 15.0, offset: Offset(0, 8))
-          ],
-          color: bgColor,
-          borderRadius: BorderRadius.circular(15)),
+      decoration: BoxDecoration(boxShadow: <BoxShadow>[
+        BoxShadow(color: Colors.black54, blurRadius: 15.0, offset: Offset(0, 8))
+      ], color: bgColor, borderRadius: BorderRadius.circular(15)),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Stack(

@@ -4,7 +4,6 @@ class CardValidProvider with ChangeNotifier {
   var _cardValid = '';
 
   void setValid(String newValue) {
-
     if (newValue.length == 3) {
       if (newValue.contains("/")) {
         _cardValid = newValue.substring(0, 2);

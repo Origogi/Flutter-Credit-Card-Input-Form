@@ -111,13 +111,16 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
     double cardHeight;
     if (widget.cardHeight != null && widget.cardHeight > 0) {
       cardHeight = widget.cardHeight;
-    }
-    else {
+    } else {
       cardHeight = cardWidth / cardRatio;
     }
 
-    final frondCardColor = widget.frondCardColor != null ? widget.frondCardColor : const Color(0xFF5D5D5E);
-    final backCardColor = widget.frondCardColor != null ? widget.backCardColor : const Color(0xFF5D5D5E);
+    final frondCardColor = widget.frondCardColor != null
+        ? widget.frondCardColor
+        : const Color(0xFF5D5D5E);
+    final backCardColor = widget.frondCardColor != null
+        ? widget.backCardColor
+        : const Color(0xFF5D5D5E);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -128,8 +131,8 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
             speed: 300,
             flipOnTouch: currentState == InputState.DONE,
             key: cardKey,
-            front: FrondCardView(height: cardHeight, bgColor : frondCardColor),
-            back: BackCardView(height: cardHeight, bgColor : backCardColor),
+            front: FrondCardView(height: cardHeight, bgColor: frondCardColor),
+            back: BackCardView(height: cardHeight, bgColor: backCardColor),
           ),
         ),
         AnimatedOpacity(

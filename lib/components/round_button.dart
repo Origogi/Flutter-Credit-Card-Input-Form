@@ -21,9 +21,8 @@ class _RoundButtonState extends State<RoundButton> {
     return GestureDetector(
       onTap: widget.onTap,
       onTapDown: (_) {
-
-        final currentState =
-            Provider.of<StateProvider>(context, listen: false).getCurrentState();
+        final currentState = Provider.of<StateProvider>(context, listen: false)
+            .getCurrentState();
 
         if (currentState == InputState.DONE) {
           return;
@@ -33,10 +32,9 @@ class _RoundButtonState extends State<RoundButton> {
           pressed = true;
         });
       },
-
       onTapUp: (_) {
-        final currentState =
-            Provider.of<StateProvider>(context, listen: false).getCurrentState();
+        final currentState = Provider.of<StateProvider>(context, listen: false)
+            .getCurrentState();
 
         if (currentState == InputState.DONE) {
           return;

@@ -37,7 +37,6 @@ class CardValid extends StatelessWidget {
         break;
     }
 
-
     return Container(
         child: Row(
       mainAxisAlignment: MainAxisAlignment.end,

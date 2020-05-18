@@ -12,7 +12,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   void initState() {
     super.initState();
@@ -25,7 +24,6 @@ class _MyAppState extends State<MyApp> {
       body: SafeArea(
           child: Stack(children: [
         CreditCardInputForm(
-
           onStateChange: (currentState, cardInfo) {
             print(currentState);
             print(cardInfo);

@@ -18,7 +18,6 @@ class CardNumberProvider with ChangeNotifier {
       }
       _cardNumber = cardNumber;
     }
-    
 
     notifyListeners();
   }
