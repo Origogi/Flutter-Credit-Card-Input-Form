@@ -13,3 +13,8 @@
 ## 1.0.3
 
 * update README
+
+## 1.0.4
+
+* update README
+  - change homepage
