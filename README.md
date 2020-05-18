@@ -21,7 +21,7 @@ This package provides visually beautiful UX through animation of credit card inf
 
 <div align="center">
 
-<img src="https://user-images.githubusercontent.com/35194820/76142013-d0168680-60ac-11ea-9007-0db57373f96f.gif" width="250" >
+<img src="https://user-images.githubusercontent.com/35194820/82177030-5bb15c80-9913-11ea-83bf-d6bfdf858f04.gif" width="250" >
 
 </div>
 

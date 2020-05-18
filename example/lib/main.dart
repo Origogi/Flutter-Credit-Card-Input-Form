@@ -25,9 +25,7 @@ class _MyAppState extends State<MyApp> {
       body: SafeArea(
           child: Stack(children: [
         CreditCardInputForm(
-          cardHeight: 170,
-          frondCardColor: Colors.red,
-          backCardColor: Colors.blueAccent,
+
           onStateChange: (currentState, cardInfo) {
             print(currentState);
             print(cardInfo);
