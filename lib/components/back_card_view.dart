@@ -8,10 +8,10 @@ import 'card_cvv.dart';
 import 'card_sign.dart';
 
 class BackCardView extends StatelessWidget {
-
   final height;
+  final bgColor;
 
-  BackCardView({this.height});
+  BackCardView({this.height, this.bgColor});
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +20,9 @@ class BackCardView extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 5),
       height: height,
-      decoration: BoxDecoration(
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: Colors.black54, blurRadius: 15.0, offset: Offset(0, 8))
-          ],
-          color: const Color(0xFF5D5D5E),
-          borderRadius: BorderRadius.circular(15)),
+      decoration: BoxDecoration(boxShadow: <BoxShadow>[
+        BoxShadow(color: Colors.black54, blurRadius: 15.0, offset: Offset(0, 8))
+      ], color: bgColor, borderRadius: BorderRadius.circular(15)),
       child: Stack(
         children: <Widget>[
           Container(

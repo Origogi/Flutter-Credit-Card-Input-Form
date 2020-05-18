@@ -17,9 +17,16 @@ typedef CardInfoCallback = void Function(
     InputState currentState, CardInfo cardInfo);
 
 class CreditCardInputForm extends StatelessWidget {
-  CreditCardInputForm({this.onStateChange});
+  CreditCardInputForm(
+      {this.onStateChange,
+      this.cardHeight,
+      this.frondCardColor,
+      this.backCardColor});
 
   final Function onStateChange;
+  final double cardHeight;
+  final Color frondCardColor;
+  final Color backCardColor;
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +48,27 @@ class CreditCardInputForm extends StatelessWidget {
           create: (context) => CardCVVProvider(),
         )
       ],
-      child: CreditCardInputImpl(onStateChange: onStateChange),
+      child: CreditCardInputImpl(
+        onCardModelChanged: onStateChange,
+        backCardColor: backCardColor,
+        frondCardColor: frondCardColor,
+        cardHeight: cardHeight,
+      ),
     );
   }
 }
 
 class CreditCardInputImpl extends StatefulWidget {
-  final CardInfoCallback onStateChange;
+  final CardInfoCallback onCardModelChanged;
+  final double cardHeight;
+  final Color frondCardColor;
+  final Color backCardColor;
 
-  CreditCardInputImpl({
-    @required this.onStateChange,
-  });
+  CreditCardInputImpl(
+      {this.onCardModelChanged,
+      this.cardHeight,
+      this.frondCardColor,
+      this.backCardColor});
 
   @override
   _CreditCardInputImplState createState() => _CreditCardInputImplState();
@@ -83,15 +100,24 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
 
     final cvv = Provider.of<CardCVVProvider>(context, listen: true).cardCVV;
 
-    widget.onStateChange(
+    widget.onCardModelChanged(
         currentState,
         CardInfo(
             name: name, cardNumber: cardNumber, validate: valid, cvv: cvv));
 
-    
+    double cardWidth =
+        MediaQuery.of(context).size.width - (2 * cardHorizontalpadding);
 
-    double cardWidth = MediaQuery.of(context).size.width - (2 * cardHorizontalpadding);
-    double cardHeight = cardWidth / cardRatio;
+    double cardHeight;
+    if (widget.cardHeight != null && widget.cardHeight > 0) {
+      cardHeight = widget.cardHeight;
+    }
+    else {
+      cardHeight = cardWidth / cardRatio;
+    }
+
+    final frondCardColor = widget.frondCardColor != null ? widget.frondCardColor : const Color(0xFF5D5D5E);
+    final backCardColor = widget.frondCardColor != null ? widget.backCardColor : const Color(0xFF5D5D5E);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -102,8 +128,8 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
             speed: 300,
             flipOnTouch: currentState == InputState.DONE,
             key: cardKey,
-            front: FrondCardView(height: cardHeight),
-            back: BackCardView(height : cardHeight),
+            front: FrondCardView(height: cardHeight, bgColor : frondCardColor),
+            back: BackCardView(height: cardHeight, bgColor : backCardColor),
           ),
         ),
         AnimatedOpacity(

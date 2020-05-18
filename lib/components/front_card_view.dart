@@ -9,8 +9,9 @@ import 'card_valid.dart';
 class FrondCardView extends StatelessWidget {
 
   final height;
+  final bgColor;
 
-  FrondCardView({this.height});
+  FrondCardView({this.height, this.bgColor});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class FrondCardView extends StatelessWidget {
             BoxShadow(
                 color: Colors.black54, blurRadius: 15.0, offset: Offset(0, 8))
           ],
-          color: const Color(0xFF5D5D5E),
+          color: bgColor,
           borderRadius: BorderRadius.circular(15)),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
