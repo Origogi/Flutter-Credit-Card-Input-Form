@@ -7,9 +7,9 @@ import 'package:credit_card_input_form/constants/constanst.dart';
 class CardNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Provider.of<CardNumberProvider>(context).cardNumber;
-
-    String cardNumber = Provider.of<CardNumberProvider>(context).cardNumber;
+    String cardNumber =
+        Provider.of<CardNumberProvider>(context, listen: true).cardNumber;
+    print("cardNumber");
     String defaultNumber = '';
 
     final numberLength = cardNumber.replaceAll(" ", "").length;

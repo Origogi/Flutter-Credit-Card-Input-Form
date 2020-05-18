@@ -6,3 +6,6 @@
 
 * Adjust flutter format
 
+## 1.0.2
+
+* update lastest provider library

@@ -10,6 +10,7 @@ class YellowBorder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentState = Provider.of<StateProvider>(context).getCurrentState();
+    print(currentState);
 
     final align = getAlign(currentState);
     final height = getHeight(currentState);

@@ -30,7 +30,9 @@ class InputViewPager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<StateProvider>(context).addListener(() {
-      int index = Provider.of<StateProvider>(context).getCurrentState().index;
+      int index = Provider.of<StateProvider>(context, listen: false)
+          .getCurrentState()
+          .index;
 
       if (index < focusNodes.length) {
         FocusScope.of(context).requestFocus(focusNodes[index]);
@@ -131,7 +133,7 @@ class _InputFormState extends State<InputForm> {
 
     if (widget.index == InputState.NUMBER.index) {
       textValue =
-          Provider.of<CardNumberProvider>(context, listen: false).cardNumber;
+          Provider.of<CardNumberProvider>(context, listen: true).cardNumber;
     } else if (widget.index == InputState.NAME.index) {
       textValue =
           Provider.of<CardNameProvider>(context, listen: false).cardName;
@@ -169,13 +171,17 @@ class _InputFormState extends State<InputForm> {
               maxLength: maxLength,
               onChanged: (String newValue) {
                 if (widget.index == InputState.NUMBER.index) {
-                  Provider.of<CardNumberProvider>(context).setNumber(newValue);
+                  Provider.of<CardNumberProvider>(context, listen: false)
+                      .setNumber(newValue);
                 } else if (widget.index == InputState.NAME.index) {
-                  Provider.of<CardNameProvider>(context).setName(newValue);
+                  Provider.of<CardNameProvider>(context, listen: false)
+                      .setName(newValue);
                 } else if (widget.index == InputState.VALIDATE.index) {
-                  Provider.of<CardValidProvider>(context).setValid(newValue);
+                  Provider.of<CardValidProvider>(context, listen: false)
+                      .setValid(newValue);
                 } else if (widget.index == InputState.CVV.index) {
-                  Provider.of<CardCVVProvider>(context).setCVV(newValue);
+                  Provider.of<CardCVVProvider>(context, listen: false)
+                      .setCVV(newValue);
                 }
               },
               decoration: InputDecoration(

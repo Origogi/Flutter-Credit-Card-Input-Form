@@ -1,6 +1,6 @@
 name: credit_card_input_form
 description: This package provides visually beautiful UX through animation of credit card information input form.
-version: 1.0.1
+version: 1.0.2
 homepage: https://origogi.github.io
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
-  provider: ^3.0.0+1
+  provider: ^4.1.2
   flip_card: ^0.4.4
 
 

@@ -87,18 +87,15 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
 
   @override
   Widget build(BuildContext context) {
-    final currentState =
-        Provider.of<StateProvider>(context, listen: true).getCurrentState();
+    final currentState = Provider.of<StateProvider>(context).getCurrentState();
 
-    final name = Provider.of<CardNameProvider>(context, listen: true).cardName;
+    final name = Provider.of<CardNameProvider>(context).cardName;
 
-    final cardNumber =
-        Provider.of<CardNumberProvider>(context, listen: true).cardNumber;
+    final cardNumber = Provider.of<CardNumberProvider>(context).cardNumber;
 
-    final valid =
-        Provider.of<CardValidProvider>(context, listen: true).cardValid;
+    final valid = Provider.of<CardValidProvider>(context).cardValid;
 
-    final cvv = Provider.of<CardCVVProvider>(context, listen: true).cardCVV;
+    final cvv = Provider.of<CardCVVProvider>(context).cardCVV;
 
     widget.onCardModelChanged(
         currentState,
