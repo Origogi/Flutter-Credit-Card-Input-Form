@@ -10,9 +10,18 @@
     <img src="https://img.shields.io/badge/Platform-Flutter-yellow.svg"
       alt="Platform" />
   </a>
+  <a href="https://pub.dev/packages/credit_card_input_form/versions/1.0.4">
+   <img src="https://img.shields.io/badge/pub-v1.0.4-blue" />
+
+</a>
 <a href="https://github.com/Solido/awesome-flutter">
    <img alt="Awesome Flutter" src="https://img.shields.io/badge/Awesome-Flutter-blue.svg?longCache=true&style=flat-square" />
+
 </a>
+   <img src="https://img.shields.io/github/forks/Origogi/Flutter-Credit-Card-Input-Form" >
+<img src="https://img.shields.io/github/stars/Origogi/Flutter-Credit-Card-Input-Form" >
+<img src="https://img.shields.io/github/license/Origogi/Flutter-Credit-Card-Input-Form" >
+
 </div><br>
 
 This package provides visually beautiful UX through animation of credit card information input form.
