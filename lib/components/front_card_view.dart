@@ -7,11 +7,16 @@ import 'card_number.dart';
 import 'card_valid.dart';
 
 class FrondCardView extends StatelessWidget {
+
+  final height;
+
+  FrondCardView({this.height});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 15),
-      height: 200,
+      margin: EdgeInsets.only(bottom: 5),
+      height: height,
       decoration: BoxDecoration(
           boxShadow: <BoxShadow>[
             BoxShadow(

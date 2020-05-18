@@ -65,6 +65,9 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
 
   final GlobalKey<FlipCardState> cardKey = GlobalKey<FlipCardState>();
 
+  final cardHorizontalpadding = 12;
+  final cardRatio = 16.0 / 9.0;
+
   @override
   Widget build(BuildContext context) {
     final currentState =
@@ -85,6 +88,11 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
         CardInfo(
             name: name, cardNumber: cardNumber, validate: valid, cvv: cvv));
 
+    
+
+    double cardWidth = MediaQuery.of(context).size.width - (2 * cardHorizontalpadding);
+    double cardHeight = cardWidth / cardRatio;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
@@ -94,8 +102,8 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
             speed: 300,
             flipOnTouch: currentState == InputState.DONE,
             key: cardKey,
-            front: FrondCardView(),
-            back: BackCardView(),
+            front: FrondCardView(height: cardHeight),
+            back: BackCardView(height : cardHeight),
           ),
         ),
         AnimatedOpacity(

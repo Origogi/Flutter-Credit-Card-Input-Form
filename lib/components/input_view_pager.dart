@@ -41,7 +41,7 @@ class InputViewPager extends StatelessWidget {
     });
 
     return Container(
-        height: 100,
+        height: 86,
         child: PageView.builder(
             physics: NeverScrollableScrollPhysics(),
             controller: pageController,
@@ -153,7 +153,7 @@ class _InputFormState extends State<InputForm> {
               style: TextStyle(fontSize: 15, color: Colors.black38),
             ),
             SizedBox(
-              height: 10,
+              height: 5,
             ),
             TextField(
               autofocus: widget.index == 0,
@@ -179,16 +179,17 @@ class _InputFormState extends State<InputForm> {
                 }
               },
               decoration: InputDecoration(
+                isDense: true,
                 counter: SizedBox(
                   height: 0,
                 ),
                 contentPadding:
-                    const EdgeInsets.symmetric(vertical: 2.0, horizontal: 10),
+                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
                 border: OutlineInputBorder(
-                    borderSide: BorderSide(width: 0.5, color: Colors.black38),
+                    borderSide: BorderSide(width: 1, color: Colors.black38),
                     borderRadius: BorderRadius.circular(5)),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 0.5, color: Colors.black38),
+                    borderSide: BorderSide(width: 1, color: Colors.black38),
                     borderRadius: BorderRadius.circular(5)),
               ),
             )
