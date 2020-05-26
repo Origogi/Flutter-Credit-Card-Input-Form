@@ -13,6 +13,8 @@ import 'package:credit_card_input_form/provider/card_valid_provider.dart';
 import 'package:credit_card_input_form/provider/state_provider.dart';
 import 'package:provider/provider.dart';
 
+import 'constants/constanst.dart';
+
 typedef CardInfoCallback = void Function(
     InputState currentState, CardInfo cardInfo);
 
@@ -85,9 +87,11 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
   final cardHorizontalpadding = 12;
   final cardRatio = 16.0 / 9.0;
 
+  var _currentState = InputState.NUMBER;
+
   @override
   Widget build(BuildContext context) {
-    final currentState = Provider.of<StateProvider>(context).getCurrentState();
+    final newState = Provider.of<StateProvider>(context).getCurrentState();
 
     final name = Provider.of<CardNameProvider>(context).cardName;
 
@@ -97,10 +101,16 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
 
     final cvv = Provider.of<CardCVVProvider>(context).cardCVV;
 
-    widget.onCardModelChanged(
-        currentState,
-        CardInfo(
-            name: name, cardNumber: cardNumber, validate: valid, cvv: cvv));
+    if (newState != _currentState) {
+      _currentState = newState;
+
+      Future(() {
+        widget.onCardModelChanged(
+            _currentState,
+            CardInfo(
+                name: name, cardNumber: cardNumber, validate: valid, cvv: cvv));
+      });
+    }
 
     double cardWidth =
         MediaQuery.of(context).size.width - (2 * cardHorizontalpadding);
@@ -126,14 +136,14 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: FlipCard(
             speed: 300,
-            flipOnTouch: currentState == InputState.DONE,
+            flipOnTouch: _currentState == InputState.DONE,
             key: cardKey,
             front: FrondCardView(height: cardHeight, bgColor: frondCardColor),
             back: BackCardView(height: cardHeight, bgColor: backCardColor),
           ),
         ),
         AnimatedOpacity(
-          opacity: currentState == InputState.DONE ? 0 : 1,
+          opacity: _currentState == InputState.DONE ? 0 : 1,
           duration: Duration(milliseconds: 500),
           child: InputViewPager(
             pageController: pageController,
@@ -141,25 +151,25 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
         ),
         Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
           AnimatedOpacity(
-            opacity: currentState == InputState.NUMBER ||
-                    currentState == InputState.DONE
+            opacity: _currentState == InputState.NUMBER ||
+                    _currentState == InputState.DONE
                 ? 0
                 : 1,
             duration: Duration(milliseconds: 500),
             child: RoundButton(
                 buttonTitle: "Prev",
                 onTap: () {
-                  if (InputState.DONE == currentState) {
+                  if (InputState.DONE == _currentState) {
                     return;
                   }
 
-                  if (InputState.NUMBER != currentState) {
+                  if (InputState.NUMBER != _currentState) {
                     pageController.previousPage(
                         duration: Duration(milliseconds: 300),
                         curve: Curves.easeIn);
                   }
 
-                  if (InputState.CVV == currentState) {
+                  if (InputState.CVV == _currentState) {
                     cardKey.currentState.toggleCard();
                   }
                   Provider.of<StateProvider>(context, listen: false)
@@ -170,21 +180,21 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
             width: 10,
           ),
           AnimatedOpacity(
-            opacity: currentState == InputState.DONE ? 0 : 1,
+            opacity: _currentState == InputState.DONE ? 0 : 1,
             duration: Duration(milliseconds: 500),
             child: RoundButton(
-                buttonTitle: currentState == InputState.CVV ||
-                        currentState == InputState.DONE
+                buttonTitle: _currentState == InputState.CVV ||
+                        _currentState == InputState.DONE
                     ? "Done"
                     : "Next",
                 onTap: () {
-                  if (InputState.CVV != currentState) {
+                  if (InputState.CVV != _currentState) {
                     pageController.nextPage(
                         duration: Duration(milliseconds: 300),
                         curve: Curves.easeIn);
                   }
 
-                  if (InputState.VALIDATE == currentState) {
+                  if (InputState.VALIDATE == _currentState) {
                     cardKey.currentState.toggleCard();
                   }
 
