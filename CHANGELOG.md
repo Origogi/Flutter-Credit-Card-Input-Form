@@ -18,3 +18,7 @@
 
 * update README
   - change homepage
+
+## 1.0.5
+
+* Fixed isssue when calling setState () with onStateChange () callback

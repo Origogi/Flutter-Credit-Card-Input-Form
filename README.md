@@ -42,7 +42,7 @@ This package provides visually beautiful UX through animation of credit card inf
     
 ```dart
 dependencies:
-    credit_card_input_form: ^1.0.4
+    credit_card_input_form: ^1.0.5
 ```
 
 2. Import the package

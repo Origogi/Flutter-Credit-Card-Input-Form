@@ -152,7 +152,7 @@ class _InputFormState extends State<InputForm> {
           children: <Widget>[
             Text(
               widget.title,
-              style: TextStyle(fontSize: 15, color: Colors.black38),
+              style: TextStyle(fontSize: 12, color: Colors.black38),
             ),
             SizedBox(
               height: 5,
