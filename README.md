@@ -10,8 +10,8 @@
     <img src="https://img.shields.io/badge/Platform-Flutter-yellow.svg"
       alt="Platform" />
   </a>
-  <a href="https://pub.dev/packages/credit_card_input_form/versions/1.0.4">
-   <img src="https://img.shields.io/badge/pub-v1.0.4-blue" />
+  <a href="https://pub.dev/packages/credit_card_input_form/versions/1.0.5">
+   <img src="https://img.shields.io/badge/pub-v1.0.5-blue" />
 
 </a>
 <a href="https://github.com/Solido/awesome-flutter">
