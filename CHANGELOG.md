@@ -26,3 +26,7 @@
 ## 1.1.0
 
 * Add `RESET`button
+
+## 1.1.0
+
+* update README

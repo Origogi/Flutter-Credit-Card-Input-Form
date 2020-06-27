@@ -11,7 +11,7 @@
       alt="Platform" />
   </a>
   <a href="https://pub.dev/packages/credit_card_input_form">
-   <img src="https://img.shields.io/badge/pub-v1.1.0-blue" />
+   <img src="https://img.shields.io/badge/pub-v1.1.1-blue" />
 
 </a>
 <a href="https://github.com/Solido/awesome-flutter">
@@ -42,7 +42,7 @@ This package provides visually beautiful UX through animation of credit card inf
     
 ```dart
 dependencies:
-    credit_card_input_form: ^1.1.0
+    credit_card_input_form: ^1.1.1
 ```
 
 2. Import the package
