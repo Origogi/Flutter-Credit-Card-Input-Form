@@ -22,6 +22,12 @@ class StateProvider with ChangeNotifier {
     }
   }
 
+  void moveFirstState() {
+    currentIndex = 0;
+    _currentState = _states[currentIndex];
+    notifyListeners();
+  }
+
   void movePrevState() {
     if (currentIndex > 0) {
       currentIndex--;

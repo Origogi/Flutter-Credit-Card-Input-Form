@@ -59,6 +59,7 @@ import 'package:credit_card_input_form/credit_card_input_form.dart';
    cardHeight: 170,
    frondCardColor: Colors.red,
    backCardColor: Colors.blueAccent,
+   showResetButton : true,
    onStateChange: (currentState, cardInfo) {
    print(currentState);
    print(cardInfo);

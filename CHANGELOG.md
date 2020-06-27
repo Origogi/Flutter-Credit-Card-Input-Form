@@ -22,3 +22,7 @@
 ## 1.0.5
 
 * Fixed isssue when calling setState () with onStateChange () callback
+
+## 1.1.0
+
+* Add `RESET`button

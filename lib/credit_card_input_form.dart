@@ -1,4 +1,6 @@
+import 'package:credit_card_input_form/components/reset_button.dart';
 import 'package:flip_card/flip_card.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:credit_card_input_form/components/back_card_view.dart';
 import 'package:credit_card_input_form/components/front_card_view.dart';
@@ -23,12 +25,14 @@ class CreditCardInputForm extends StatelessWidget {
       {this.onStateChange,
       this.cardHeight,
       this.frondCardColor,
-      this.backCardColor});
+      this.backCardColor,
+      this.showResetButton = true});
 
   final Function onStateChange;
   final double cardHeight;
   final Color frondCardColor;
   final Color backCardColor;
+  final bool showResetButton;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +59,7 @@ class CreditCardInputForm extends StatelessWidget {
         backCardColor: backCardColor,
         frondCardColor: frondCardColor,
         cardHeight: cardHeight,
+        showResetButton: showResetButton,
       ),
     );
   }
@@ -65,10 +70,12 @@ class CreditCardInputImpl extends StatefulWidget {
   final double cardHeight;
   final Color frondCardColor;
   final Color backCardColor;
+  final bool showResetButton;
 
   CreditCardInputImpl(
       {this.onCardModelChanged,
       this.cardHeight,
+      this.showResetButton,
       this.frondCardColor,
       this.backCardColor});
 
@@ -142,12 +149,44 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
             back: BackCardView(height: cardHeight, bgColor: backCardColor),
           ),
         ),
-        AnimatedOpacity(
-          opacity: _currentState == InputState.DONE ? 0 : 1,
-          duration: Duration(milliseconds: 500),
-          child: InputViewPager(
-            pageController: pageController,
-          ),
+        Stack(
+          children: [
+            AnimatedOpacity(
+              opacity: _currentState == InputState.DONE ? 0 : 1,
+              duration: Duration(milliseconds: 500),
+              child: InputViewPager(
+                pageController: pageController,
+              ),
+            ),
+            Align(
+                alignment: Alignment.center,
+                child: AnimatedOpacity(
+                    opacity: widget.showResetButton &&
+                            _currentState == InputState.DONE
+                        ? 1
+                        : 0,
+                    duration: Duration(milliseconds: 500),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ResetButton(
+                        onTap: () {
+                          if (!widget.showResetButton) {
+                            return;
+                          }
+
+                          Provider.of<StateProvider>(context, listen: false)
+                              .moveFirstState();
+                          pageController.animateToPage(0,
+                              duration: Duration(milliseconds: 300),
+                              curve: Curves.easeIn);
+
+                          if (!cardKey.currentState.isFront) {
+                            cardKey.currentState.toggleCard();
+                          }
+                        },
+                      ),
+                    ))),
+          ],
         ),
         Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
           AnimatedOpacity(
