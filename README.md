@@ -10,8 +10,8 @@
     <img src="https://img.shields.io/badge/Platform-Flutter-yellow.svg"
       alt="Platform" />
   </a>
-  <a href="https://pub.dev/packages/credit_card_input_form/versions/1.0.5">
-   <img src="https://img.shields.io/badge/pub-v1.0.5-blue" />
+  <a href="https://pub.dev/packages/credit_card_input_form">
+   <img src="https://img.shields.io/badge/pub-v1.1.0-blue" />
 
 </a>
 <a href="https://github.com/Solido/awesome-flutter">
@@ -42,7 +42,7 @@ This package provides visually beautiful UX through animation of credit card inf
     
 ```dart
 dependencies:
-    credit_card_input_form: ^1.0.5
+    credit_card_input_form: ^1.1.0
 ```
 
 2. Import the package
@@ -92,4 +92,4 @@ This package's animation is inspired from from this [Dribbble](https://dribbble.
 
 ## TODO List
 
-- [ ] add `RESET` button
+- [x] add `RESET` button

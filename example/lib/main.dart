@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
           // color: currentColor,
           child: Stack(children: [
             CreditCardInputForm(
-              showResetButton: false,
+              showResetButton: true,
               onStateChange: (currentState, cardInfo) {
                 print(currentState);
                 print(cardInfo);
