@@ -87,4 +87,8 @@ https://pub.dev/packages/provider
 ## Reference
 
 This package's animation is inspired from from this [Dribbble](https://dribbble.com/shots/6440077-Add-a-New-Credit-Card-alternate-flow
-) art.
+) art
+
+## TODO List
+
+- [ ] add `RESET` button
