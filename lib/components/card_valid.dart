@@ -1,3 +1,4 @@
+import 'package:credit_card_input_form/constants/captions.dart';
 import 'package:flutter/material.dart';
 import 'package:credit_card_input_form/provider/card_valid_provider.dart';
 import 'package:provider/provider.dart';
@@ -8,24 +9,16 @@ class CardValid extends StatelessWidget {
   Widget build(BuildContext context) {
     String inputCardValid = Provider.of<CardValidProvider>(context).cardValid;
 
+    var defaultCardValid = Provider.of<Captions>(context)
+        .getCaption('MM_YY')
+        .substring(inputCardValid.length);
+
     inputCardValid = inputCardValid.replaceAll("/", "");
 
-    var defaultCardValid = '';
-
     switch (inputCardValid.length) {
-      case 0:
-        defaultCardValid = 'MM/YY';
-        break;
-      case 1:
-        defaultCardValid = 'M/YY';
-        break;
-      case 2:
-        defaultCardValid = '/YY';
-        break;
       case 3:
         inputCardValid =
             inputCardValid[0] + inputCardValid[1] + '/' + inputCardValid[2];
-        defaultCardValid = 'Y';
         break;
       case 4:
         inputCardValid = inputCardValid[0] +
@@ -33,7 +26,6 @@ class CardValid extends StatelessWidget {
             '/' +
             inputCardValid[2] +
             inputCardValid[3];
-        defaultCardValid = '';
         break;
     }
 

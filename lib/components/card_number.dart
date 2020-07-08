@@ -9,7 +9,6 @@ class CardNumber extends StatelessWidget {
   Widget build(BuildContext context) {
     String cardNumber =
         Provider.of<CardNumberProvider>(context, listen: true).cardNumber;
-    print("cardNumber");
     String defaultNumber = '';
 
     final numberLength = cardNumber.replaceAll(" ", "").length;

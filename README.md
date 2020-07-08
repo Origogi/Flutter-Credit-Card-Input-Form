@@ -61,9 +61,10 @@ import 'package:credit_card_input_form/credit_card_input_form.dart';
    backCardColor: Colors.blueAccent,
    showResetButton : true,
    onStateChange: (currentState, cardInfo) {
-   print(currentState);
-   print(cardInfo);
+     print(currentState);
+     print(cardInfo);
    },
+   customCaptions: {...}  // translate and customize captions (see Example)
 ),
 ```
 

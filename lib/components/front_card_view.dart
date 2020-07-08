@@ -1,6 +1,8 @@
+import 'package:credit_card_input_form/constants/captions.dart';
 import 'package:flutter/material.dart';
 import 'package:credit_card_input_form/components/yellow_border.dart';
 import 'package:credit_card_input_form/constants/constanst.dart';
+import 'package:provider/provider.dart';
 import 'card_logo.dart';
 import 'card_name.dart';
 import 'card_number.dart';
@@ -14,6 +16,8 @@ class FrontCardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final captions = Provider.of<Captions>(context);
+
     return Container(
       margin: EdgeInsets.only(bottom: 5),
       height: height,
@@ -39,7 +43,7 @@ class FrontCardView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Text(
-                      'CARDHOLDER NAME',
+                      captions.getCaption('CARDHOLDER_NAME').toUpperCase(),
                       style: kTextStyle,
                     ),
                     SizedBox(
@@ -59,7 +63,7 @@ class FrontCardView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Text(
-                      'VALID THRU',
+                      captions.getCaption('VALID_THRU').toUpperCase(),
                       style: kTextStyle,
                     ),
                     SizedBox(

@@ -1,3 +1,4 @@
+import 'package:credit_card_input_form/constants/captions.dart';
 import 'package:flutter/material.dart';
 import 'package:credit_card_input_form/constants/constanst.dart';
 import 'package:credit_card_input_form/provider/card_cvv_provider.dart';
@@ -13,13 +14,6 @@ class InputViewPager extends StatelessWidget {
 
   InputViewPager({this.pageController});
 
-  final titleMap = {
-    0: 'Card Number',
-    1: 'Cardholder Name',
-    2: 'Valid Thru',
-    3: 'Security Code(CVC)'
-  };
-
   final List<FocusNode> focusNodes = [
     FocusNode(),
     FocusNode(),
@@ -29,6 +23,15 @@ class InputViewPager extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final captions = Provider.of<Captions>(context);
+
+    final titleMap = {
+      0: captions.getCaption('CARD_NUMBER'),
+      1: captions.getCaption('CARDHOLDER_NAME'),
+      2: captions.getCaption('VALID_THRU'),
+      3: captions.getCaption('SECURITY_CODE_CVC'),
+    };
+
     Provider.of<StateProvider>(context).addListener(() {
       int index = Provider.of<StateProvider>(context, listen: false)
           .getCurrentState()
