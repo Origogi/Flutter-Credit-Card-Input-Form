@@ -9,7 +9,8 @@ class CardName extends StatelessWidget {
   Widget build(BuildContext context) {
     final defaultName =
         Provider.of<Captions>(context).getCaption('NAME_SURNAME').toUpperCase();
-    final String name = Provider.of<CardNameProvider>(context).cardName;
+    final String name =
+        Provider.of<CardNameProvider>(context).cardName.toUpperCase();
 
     return Text(name.isNotEmpty ? name : defaultName,
         style: name.isNotEmpty ? kNametextStyle : kDefaultNameTextStyle);

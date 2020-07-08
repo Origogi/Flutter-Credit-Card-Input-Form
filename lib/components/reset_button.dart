@@ -1,11 +1,9 @@
+import 'package:credit_card_input_form/constants/captions.dart';
 import 'package:flutter/material.dart';
-import 'package:credit_card_input_form/constants/constanst.dart';
-import 'package:credit_card_input_form/provider/state_provider.dart';
 import 'package:provider/provider.dart';
 
 class ResetButton extends StatefulWidget {
   final Function onTap;
-  final buttonTitle = "RESET";
 
   ResetButton({this.onTap});
 
@@ -18,6 +16,8 @@ class _ResetButtonState extends State<ResetButton> {
 
   @override
   Widget build(BuildContext context) {
+    final captions = Provider.of<Captions>(context);
+
     return GestureDetector(
       onTap: widget.onTap,
       onTapDown: (_) {
@@ -67,7 +67,7 @@ class _ResetButtonState extends State<ResetButton> {
                   color: Colors.white,
                 ),
                 Text(
-                  widget.buttonTitle,
+                  captions.getCaption('RESET'),
                   style: TextStyle(
                       color: pressed ? Colors.grey : Colors.white,
                       fontWeight: FontWeight.bold,

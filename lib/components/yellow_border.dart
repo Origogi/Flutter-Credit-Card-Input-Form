@@ -10,7 +10,6 @@ class YellowBorder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentState = Provider.of<StateProvider>(context).getCurrentState();
-    print(currentState);
 
     final align = getAlign(currentState);
     final height = getHeight(currentState);
@@ -81,15 +80,14 @@ class YellowBorder extends StatelessWidget {
     switch (currentState) {
       case InputState.NUMBER:
         width =
-            textSize('XXXX XXXX XXXX XXXX', kCardDefaultTextStyle).width + 10;
+            textSize('XXXX XXXX XXXX XXXX', kCardDefaultTextStyle).width + 40;
         break;
       case InputState.NAME:
         String name = Provider.of<CardNameProvider>(context).cardName;
         if (name.isEmpty) {
           name = 'NAME SURNAME';
         }
-
-        width = textSize(name, kNametextStyle).width + 10;
+        width = textSize(name, kNametextStyle).width + 60;
         break;
       case InputState.CVV:
       case InputState.VALIDATE:
