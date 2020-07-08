@@ -6,11 +6,11 @@ import 'card_name.dart';
 import 'card_number.dart';
 import 'card_valid.dart';
 
-class FrondCardView extends StatelessWidget {
+class FrontCardView extends StatelessWidget {
   final height;
   final bgColor;
 
-  FrondCardView({this.height, this.bgColor});
+  FrontCardView({this.height, this.bgColor});
 
   @override
   Widget build(BuildContext context) {
