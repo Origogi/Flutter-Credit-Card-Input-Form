@@ -80,14 +80,14 @@ class YellowBorder extends StatelessWidget {
     switch (currentState) {
       case InputState.NUMBER:
         width =
-            textSize('XXXX XXXX XXXX XXXX', kCardDefaultTextStyle).width + 40;
+            textSize('XXXX XXXX XXXX XXXX', kCardDefaultTextStyle).width + 10;
         break;
       case InputState.NAME:
         String name = Provider.of<CardNameProvider>(context).cardName;
         if (name.isEmpty) {
           name = 'NAME SURNAME';
         }
-        width = textSize(name, kNametextStyle).width + 60;
+        width = textSize(name.toUpperCase(), kNametextStyle).width + 10;
         break;
       case InputState.CVV:
       case InputState.VALIDATE:

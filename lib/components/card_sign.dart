@@ -12,6 +12,18 @@ class CardSign extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CardNameProvider>(
       builder: (context, provider, child) {
+        String cardName = provider.cardName;
+
+        if (cardName.isNotEmpty) {
+          print(cardName);
+          cardName = cardName
+              .split(' ')
+              .map((e) => e.isNotEmpty
+                  ? '${e[0].toUpperCase()}${e.substring(1).toLowerCase()}'
+                  : e)
+              .join(' ');
+        }
+
         return Container(
           margin: EdgeInsets.only(left: 25),
           height: 40,
@@ -19,12 +31,7 @@ class CardSign extends StatelessWidget {
           color: Colors.grey,
           child: Center(
             child: Text(
-              // uppercase on first letter
-              provider.cardName
-                  .split(' ')
-                  .map((e) =>
-                      '${e[0].toUpperCase()}${e.substring(1).toLowerCase()}')
-                  .join(' '),
+              cardName,
               style: kSignTextStyle,
             ),
           ),
