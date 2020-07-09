@@ -15,24 +15,28 @@ import 'package:credit_card_input_form/provider/card_valid_provider.dart';
 import 'package:credit_card_input_form/provider/state_provider.dart';
 import 'package:provider/provider.dart';
 
+import 'constants/captions.dart';
 import 'constants/constanst.dart';
 
 typedef CardInfoCallback = void Function(
     InputState currentState, CardInfo cardInfo);
 
 class CreditCardInputForm extends StatelessWidget {
-  CreditCardInputForm(
-      {this.onStateChange,
-      this.cardHeight,
-      this.frondCardColor,
-      this.backCardColor,
-      this.showResetButton = true});
+  CreditCardInputForm({
+    this.onStateChange,
+    this.cardHeight,
+    this.frontCardColor,
+    this.backCardColor,
+    this.showResetButton = true,
+    this.customCaptions,
+  });
 
   final Function onStateChange;
   final double cardHeight;
-  final Color frondCardColor;
+  final Color frontCardColor;
   final Color backCardColor;
   final bool showResetButton;
+  final Map<String, String> customCaptions;
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +56,15 @@ class CreditCardInputForm extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => CardCVVProvider(),
-        )
+        ),
+        Provider(
+          create: (_) => Captions(customCaptions: customCaptions),
+        ),
       ],
       child: CreditCardInputImpl(
         onCardModelChanged: onStateChange,
         backCardColor: backCardColor,
-        frondCardColor: frondCardColor,
+        frontCardColor: frontCardColor,
         cardHeight: cardHeight,
         showResetButton: showResetButton,
       ),
@@ -68,7 +75,7 @@ class CreditCardInputForm extends StatelessWidget {
 class CreditCardInputImpl extends StatefulWidget {
   final CardInfoCallback onCardModelChanged;
   final double cardHeight;
-  final Color frondCardColor;
+  final Color frontCardColor;
   final Color backCardColor;
   final bool showResetButton;
 
@@ -76,7 +83,7 @@ class CreditCardInputImpl extends StatefulWidget {
       {this.onCardModelChanged,
       this.cardHeight,
       this.showResetButton,
-      this.frondCardColor,
+      this.frontCardColor,
       this.backCardColor});
 
   @override
@@ -108,6 +115,8 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
 
     final cvv = Provider.of<CardCVVProvider>(context).cardCVV;
 
+    final captions = Provider.of<Captions>(context);
+
     if (newState != _currentState) {
       _currentState = newState;
 
@@ -129,10 +138,10 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
       cardHeight = cardWidth / cardRatio;
     }
 
-    final frondCardColor = widget.frondCardColor != null
-        ? widget.frondCardColor
+    final frontCardColor = widget.frontCardColor != null
+        ? widget.frontCardColor
         : const Color(0xFF5D5D5E);
-    final backCardColor = widget.frondCardColor != null
+    final backCardColor = widget.frontCardColor != null
         ? widget.backCardColor
         : const Color(0xFF5D5D5E);
 
@@ -145,7 +154,7 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
             speed: 300,
             flipOnTouch: _currentState == InputState.DONE,
             key: cardKey,
-            front: FrondCardView(height: cardHeight, bgColor: frondCardColor),
+            front: FrontCardView(height: cardHeight, bgColor: frontCardColor),
             back: BackCardView(height: cardHeight, bgColor: backCardColor),
           ),
         ),
@@ -196,7 +205,7 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
                 : 1,
             duration: Duration(milliseconds: 500),
             child: RoundButton(
-                buttonTitle: "Prev",
+                buttonTitle: captions.getCaption('PREV'),
                 onTap: () {
                   if (InputState.DONE == _currentState) {
                     return;
@@ -224,8 +233,8 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
             child: RoundButton(
                 buttonTitle: _currentState == InputState.CVV ||
                         _currentState == InputState.DONE
-                    ? "Done"
-                    : "Next",
+                    ? captions.getCaption('DONE')
+                    : captions.getCaption('NEXT'),
                 onTap: () {
                   if (InputState.CVV != _currentState) {
                     pageController.nextPage(

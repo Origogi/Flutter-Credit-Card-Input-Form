@@ -30,3 +30,7 @@
 ## 1.1.0
 
 * update README
+
+## 1.1.1
+
+* added custom captions feature

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:credit_card_input_form/provider/card_name_provider.dart';
 import 'package:provider/provider.dart';
-
 import 'package:credit_card_input_form/constants/constanst.dart';
 
 class CardSign extends StatelessWidget {
@@ -20,7 +19,12 @@ class CardSign extends StatelessWidget {
           color: Colors.grey,
           child: Center(
             child: Text(
-              provider.cardName,
+              // uppercase on first letter
+              provider.cardName
+                  .split(' ')
+                  .map((e) =>
+                      '${e[0].toUpperCase()}${e.substring(1).toLowerCase()}')
+                  .join(' '),
               style: kSignTextStyle,
             ),
           ),
