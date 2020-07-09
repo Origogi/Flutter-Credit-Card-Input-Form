@@ -27,10 +27,10 @@
 
 * Add `RESET`button
 
-## 1.1.0
+## 1.1.1
 
 * update README
 
-## 1.1.1
+## 1.2.0
 
 * added custom captions feature
