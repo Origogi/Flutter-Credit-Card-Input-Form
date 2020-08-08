@@ -26,6 +26,22 @@ class _MyAppState extends State<MyApp> {
     'RESET': 'Reset',
   };
 
+  final buttonStyle = BoxDecoration(
+    borderRadius: BorderRadius.circular(30.0),
+    gradient: LinearGradient(
+        colors: [
+          const Color(0xfffcdf8a),
+          const Color(0xfff38381),
+        ],
+        begin: const FractionalOffset(0.0, 0.0),
+        end: const FractionalOffset(1.0, 0.0),
+        stops: [0.0, 1.0],
+        tileMode: TileMode.clamp),
+  );
+
+  final buttonTextStyle =
+      TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18);
+
   @override
   void initState() {
     super.initState();
@@ -38,7 +54,6 @@ class _MyAppState extends State<MyApp> {
         body: SafeArea(
           child: AnimatedContainer(
             duration: Duration(milliseconds: 300),
-            // color: currentColor,
             child: Stack(children: [
               CreditCardInputForm(
                 showResetButton: true,
@@ -47,6 +62,11 @@ class _MyAppState extends State<MyApp> {
                   print(cardInfo);
                 },
                 customCaptions: customCaptions,
+                // prevButtonStyle: buttonStyle,
+                // nextButtonStyle: buttonStyle,
+                // prevButtonTextStyle: buttonTextStyle,
+                // nextButtonTextStyle: buttonTextStyle,
+                // resetButtonTextStyle: buttonTextStyle,
               ),
             ]),
           ),
