@@ -5,8 +5,9 @@ import 'package:provider/provider.dart';
 class ResetButton extends StatefulWidget {
   final Function onTap;
   final style;
+  final textStyle;
 
-  ResetButton({this.onTap, this.style});
+  ResetButton({this.onTap, this.style, this.textStyle});
 
   @override
   _ResetButtonState createState() => _ResetButtonState();
@@ -45,13 +46,7 @@ class _ResetButtonState extends State<ResetButton> {
                   Icons.refresh,
                   color: Colors.white,
                 ),
-                Text(
-                  captions.getCaption('RESET'),
-                  style: TextStyle(
-                      color: pressed ? Colors.grey : Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15),
-                ),
+                Text(captions.getCaption('RESET'), style: widget.textStyle)
               ],
             ),
           )),

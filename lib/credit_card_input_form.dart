@@ -17,6 +17,7 @@ import 'package:provider/provider.dart';
 
 import 'constants/captions.dart';
 import 'constants/constanst.dart';
+import 'constants/constanst.dart';
 
 typedef CardInfoCallback = void Function(
     InputState currentState, CardInfo cardInfo);
@@ -29,6 +30,9 @@ class CreditCardInputForm extends StatelessWidget {
       this.backCardColor,
       this.showResetButton = true,
       this.customCaptions,
+      this.nextButtonTextStyle = kDefaultButtonTextStyle,
+      this.prevButtonTextStyle = kDefaultButtonTextStyle,
+      this.resetButtonTextStyle = kDefaultButtonTextStyle,
       this.nextButtonStyle = defaultNextPrevButtonStyle,
       this.prevButtonStyle = defaultNextPrevButtonStyle,
       this.resetButtonStyle = defaultResetButtonStyle});
@@ -42,6 +46,9 @@ class CreditCardInputForm extends StatelessWidget {
   final BoxDecoration nextButtonStyle;
   final BoxDecoration prevButtonStyle;
   final BoxDecoration resetButtonStyle;
+  final TextStyle nextButtonTextStyle;
+  final TextStyle prevButtonTextStyle;
+  final TextStyle resetButtonTextStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +82,9 @@ class CreditCardInputForm extends StatelessWidget {
         prevButtonStyle: prevButtonStyle,
         nextButtonStyle: nextButtonStyle,
         resetButtonStyle: resetButtonStyle,
+        prevButtonTextStyle: prevButtonTextStyle,
+        nextButtonTextStyle: nextButtonTextStyle,
+        resetButtonTextStyle: resetButtonTextStyle,
       ),
     );
   }
@@ -89,6 +99,9 @@ class CreditCardInputImpl extends StatefulWidget {
   final BoxDecoration nextButtonStyle;
   final BoxDecoration prevButtonStyle;
   final BoxDecoration resetButtonStyle;
+  final TextStyle nextButtonTextStyle;
+  final TextStyle prevButtonTextStyle;
+  final TextStyle resetButtonTextStyle;
 
   CreditCardInputImpl(
       {this.onCardModelChanged,
@@ -96,6 +109,9 @@ class CreditCardInputImpl extends StatefulWidget {
       this.showResetButton,
       this.frontCardColor,
       this.backCardColor,
+      this.nextButtonTextStyle,
+      this.prevButtonTextStyle,
+      this.resetButtonTextStyle,
       this.nextButtonStyle,
       this.prevButtonStyle,
       this.resetButtonStyle});
@@ -193,6 +209,7 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
                       padding: const EdgeInsets.all(8.0),
                       child: ResetButton(
                         style: widget.resetButtonStyle,
+                        textStyle: widget.resetButtonTextStyle,
                         onTap: () {
                           if (!widget.showResetButton) {
                             return;
@@ -221,6 +238,7 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
             duration: Duration(milliseconds: 500),
             child: RoundButton(
                 style: widget.prevButtonStyle,
+                textStyle: widget.prevButtonTextStyle,
                 buttonTitle: captions.getCaption('PREV'),
                 onTap: () {
                   if (InputState.DONE == _currentState) {
@@ -247,7 +265,8 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
             opacity: _currentState == InputState.DONE ? 0 : 1,
             duration: Duration(milliseconds: 500),
             child: RoundButton(
-                style: widget.prevButtonStyle,
+                style: widget.nextButtonStyle,
+                textStyle: widget.nextButtonTextStyle,
                 buttonTitle: _currentState == InputState.CVV ||
                         _currentState == InputState.DONE
                     ? captions.getCaption('DONE')

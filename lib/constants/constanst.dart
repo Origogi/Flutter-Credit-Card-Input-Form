@@ -69,6 +69,9 @@ const kSignTextStyle = TextStyle(
   package: 'credit_card_input_form',
 );
 
+const kDefaultButtonTextStyle =
+    TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15);
+
 const defaultNextPrevButtonStyle = BoxDecoration(
   boxShadow: <BoxShadow>[
     BoxShadow(color: Colors.black54, blurRadius: 5.0, offset: Offset(0, 5))

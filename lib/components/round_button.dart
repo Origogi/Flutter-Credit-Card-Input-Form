@@ -3,12 +3,15 @@ import 'package:credit_card_input_form/constants/constanst.dart';
 import 'package:credit_card_input_form/provider/state_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../constants/constanst.dart';
+
 class RoundButton extends StatefulWidget {
   final Function onTap;
   final buttonTitle;
   final style;
+  final textStyle;
 
-  RoundButton({this.onTap, this.buttonTitle, this.style});
+  RoundButton({this.onTap, this.buttonTitle, this.style, this.textStyle});
 
   @override
   _RoundButtonState createState() => _RoundButtonState();
@@ -52,13 +55,11 @@ class _RoundButtonState extends State<RoundButton> {
         height: 40 - (pressed ? 5.0 : 0.0),
         decoration: widget.style,
         child: Center(
-          child: Text(
-            widget.buttonTitle,
-            style: TextStyle(
-                color: pressed ? Colors.grey : Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 15),
-          ),
+          child: Text(widget.buttonTitle,
+              style: widget.textStyle.copyWith(
+                  color: !pressed
+                      ? widget.textStyle.color
+                      : widget.textStyle.color.withOpacity(0.2))),
         ),
       ),
     );
