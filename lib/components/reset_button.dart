@@ -4,8 +4,9 @@ import 'package:provider/provider.dart';
 
 class ResetButton extends StatefulWidget {
   final Function onTap;
+  final style;
 
-  ResetButton({this.onTap});
+  ResetButton({this.onTap, this.style});
 
   @override
   _ResetButtonState createState() => _ResetButtonState();
@@ -21,13 +22,6 @@ class _ResetButtonState extends State<ResetButton> {
     return GestureDetector(
       onTap: widget.onTap,
       onTapDown: (_) {
-        // final currentState = Provider.of<StateProvider>(context, listen: false)
-        //     .getCurrentState();
-
-        // if (currentState == InputState.DONE) {
-        //   return;
-        // }
-
         setState(() {
           pressed = true;
         });
@@ -42,22 +36,7 @@ class _ResetButtonState extends State<ResetButton> {
           duration: Duration(milliseconds: 100),
           width: 95 - (pressed ? 5.0 : 0.0),
           height: 45 - (pressed ? 5.0 : 0.0),
-          decoration: BoxDecoration(
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                  color: Colors.black54, blurRadius: 5.0, offset: Offset(0, 5))
-            ],
-            borderRadius: BorderRadius.all(Radius.circular(30)),
-            gradient: LinearGradient(
-                colors: [
-                  const Color(0xff6c16c7),
-                  const Color(0xFFB16B92),
-                ],
-                begin: const FractionalOffset(0.0, 0.0),
-                end: const FractionalOffset(1.0, 0.0),
-                stops: [0.0, 1.0],
-                tileMode: TileMode.clamp),
-          ),
+          decoration: widget.style,
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
