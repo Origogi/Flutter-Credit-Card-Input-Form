@@ -11,7 +11,7 @@
       alt="Platform" />
   </a>
   <a href="https://pub.dev/packages/credit_card_input_form">
-   <img src="https://img.shields.io/badge/pub-v1.2.0-blue" />
+   <img src="https://img.shields.io/badge/pub-v1.3.0-blue" />
 
 </a>
 <a href="https://github.com/Solido/awesome-flutter">
@@ -42,7 +42,7 @@ This package provides visually beautiful UX through animation of credit card inf
     
 ```dart
 dependencies:
-    credit_card_input_form: ^1.2.0
+    credit_card_input_form: ^1.3.0
 ```
 
 2. Import the package
@@ -64,13 +64,60 @@ import 'package:credit_card_input_form/credit_card_input_form.dart';
      print(currentState);
      print(cardInfo);
    },
-   customCaptions: {...}  // translate and customize captions (see Example)
+   customCaptions: {...},  // translate and customize captions (see Example)
 ),
 ```
 
 ## How to use
 
 Check out the **example** app in the [example](example) directory or the 'Example' tab on pub.dartlang.org for a more complete example.
+
+## New Feature
+
+### v1.3.0
+
+added custom button style feature
+
+<div align="center">
+
+|Default|Custom|
+|------|---|
+|![default](https://user-images.githubusercontent.com/35194820/89704240-1e49f180-d98d-11ea-9305-5938f0386251.PNG)|![custom](https://user-images.githubusercontent.com/35194820/89704237-1d18c480-d98d-11ea-9557-36a8519da301.PNG)|
+</div>
+
+~~~dart
+final buttonStyle = BoxDecoration(
+    borderRadius: BorderRadius.circular(30.0),
+    gradient: LinearGradient(
+        colors: [
+          const Color(0xfffcdf8a),
+          const Color(0xfff38381),
+        ],
+        begin: const FractionalOffset(0.0, 0.0),
+        end: const FractionalOffset(1.0, 0.0),
+        stops: [0.0, 1.0],
+        tileMode: TileMode.clamp),
+  );
+
+  final buttonTextStyle =
+      TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18);
+
+  CreditCardInputForm(
+    showResetButton: true,
+    onStateChange: (currentState, cardInfo) {
+      print(currentState);
+      print(cardInfo);
+    },
+    customCaptions: customCaptions,
+    prevButtonStyle: buttonStyle,
+    nextButtonStyle: buttonStyle,
+    prevButtonTextStyle: buttonTextStyle,
+    nextButtonTextStyle: buttonTextStyle,
+    resetButtonTextStyle: buttonTextStyle,
+  ),
+
+~~~
+
 
 ## 3rd party library
 

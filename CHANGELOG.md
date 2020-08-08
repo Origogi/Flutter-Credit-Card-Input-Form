@@ -34,3 +34,7 @@
 ## 1.2.0
 
 * added custom captions feature
+
+## 1.3.0
+
+* added custom button style feature
