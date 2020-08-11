@@ -141,3 +141,4 @@ This package's animation is inspired from from this [Dribbble](https://dribbble.
 ## TODO List
 
 - [x] add `RESET` button
+- [ ] add box decoration param
