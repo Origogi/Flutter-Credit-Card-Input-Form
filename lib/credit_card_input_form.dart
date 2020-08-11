@@ -17,7 +17,6 @@ import 'package:provider/provider.dart';
 
 import 'constants/captions.dart';
 import 'constants/constanst.dart';
-import 'constants/constanst.dart';
 
 typedef CardInfoCallback = void Function(
     InputState currentState, CardInfo cardInfo);

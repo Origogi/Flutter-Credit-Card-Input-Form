@@ -38,3 +38,7 @@
 ## 1.3.0
 
 * added custom button style feature
+
+## 1.3.1
+
+* removed duplicated code
