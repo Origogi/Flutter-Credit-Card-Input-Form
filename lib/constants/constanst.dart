@@ -72,7 +72,7 @@ const kSignTextStyle = TextStyle(
 const kDefaultButtonTextStyle =
     TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15);
 
-const defaultNextPrevButtonStyle = BoxDecoration(
+const defaultNextPrevButtonDecoration = BoxDecoration(
   boxShadow: <BoxShadow>[
     BoxShadow(color: Colors.black54, blurRadius: 5.0, offset: Offset(0, 5))
   ],
@@ -91,7 +91,7 @@ const defaultNextPrevButtonStyle = BoxDecoration(
       tileMode: TileMode.clamp),
 );
 
-const defaultResetButtonStyle = BoxDecoration(
+const defaultResetButtonDecoration = BoxDecoration(
   boxShadow: <BoxShadow>[
     BoxShadow(color: Colors.black54, blurRadius: 5.0, offset: Offset(0, 5))
   ],
@@ -106,6 +106,14 @@ const defaultResetButtonStyle = BoxDecoration(
       stops: [0.0, 1.0],
       tileMode: TileMode.clamp),
 );
+
+const defaultCardDecoration = BoxDecoration(
+    boxShadow: <BoxShadow>[
+      BoxShadow(color: Colors.black54, blurRadius: 15.0, offset: Offset(0, 8))
+    ],
+    color: Color(0xFF5D5D5E),
+    borderRadius: BorderRadius.all(Radius.circular(15)));
+
 enum InputState { NUMBER, NAME, VALIDATE, CVV, DONE }
 
 enum CardCompany { VISA, MASTER, AMERICAN_EXPRESS, DISCOVER, OTHER }

@@ -8,10 +8,10 @@ import '../constants/constanst.dart';
 class RoundButton extends StatefulWidget {
   final Function onTap;
   final buttonTitle;
-  final style;
+  final decoration;
   final textStyle;
 
-  RoundButton({this.onTap, this.buttonTitle, this.style, this.textStyle});
+  RoundButton({this.onTap, this.buttonTitle, this.decoration, this.textStyle});
 
   @override
   _RoundButtonState createState() => _RoundButtonState();
@@ -53,7 +53,7 @@ class _RoundButtonState extends State<RoundButton> {
         duration: Duration(milliseconds: 100),
         width: 75 - (pressed ? 5.0 : 0.0),
         height: 40 - (pressed ? 5.0 : 0.0),
-        decoration: widget.style,
+        decoration: widget.decoration,
         child: Center(
           child: Text(widget.buttonTitle,
               style: widget.textStyle.copyWith(

@@ -39,6 +39,21 @@ class _MyAppState extends State<MyApp> {
         tileMode: TileMode.clamp),
   );
 
+  final cardDecoration = BoxDecoration(
+      boxShadow: <BoxShadow>[
+        BoxShadow(color: Colors.black54, blurRadius: 15.0, offset: Offset(0, 8))
+      ],
+      gradient: LinearGradient(
+          colors: [
+            Colors.red,
+            Colors.blue,
+          ],
+          begin: const FractionalOffset(0.0, 0.0),
+          end: const FractionalOffset(1.0, 0.0),
+          stops: [0.0, 1.0],
+          tileMode: TileMode.clamp),
+      borderRadius: BorderRadius.all(Radius.circular(15)));
+
   final buttonTextStyle =
       TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18);
 
@@ -62,6 +77,8 @@ class _MyAppState extends State<MyApp> {
                   print(cardInfo);
                 },
                 customCaptions: customCaptions,
+                // frontCardDecoration: cardDecoration,
+                // backCardDecoration: cardDecoration,
                 // prevButtonStyle: buttonStyle,
                 // nextButtonStyle: buttonStyle,
                 // prevButtonTextStyle: buttonTextStyle,

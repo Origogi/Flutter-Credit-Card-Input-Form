@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 
 class ResetButton extends StatefulWidget {
   final Function onTap;
-  final style;
+  final decoration;
   final textStyle;
 
-  ResetButton({this.onTap, this.style, this.textStyle});
+  ResetButton({this.onTap, this.decoration, this.textStyle});
 
   @override
   _ResetButtonState createState() => _ResetButtonState();
@@ -37,7 +37,7 @@ class _ResetButtonState extends State<ResetButton> {
           duration: Duration(milliseconds: 100),
           width: 95 - (pressed ? 5.0 : 0.0),
           height: 45 - (pressed ? 5.0 : 0.0),
-          decoration: widget.style,
+          decoration: widget.decoration,
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

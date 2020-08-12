@@ -3,15 +3,14 @@ import 'package:credit_card_input_form/provider/state_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:credit_card_input_form/components/card_logo.dart';
 import 'package:provider/provider.dart';
-
 import 'card_cvv.dart';
 import 'card_sign.dart';
 
 class BackCardView extends StatelessWidget {
   final height;
-  final bgColor;
+  final decoration;
 
-  BackCardView({this.height, this.bgColor});
+  BackCardView({this.height, this.decoration});
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +19,7 @@ class BackCardView extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 5),
       height: height,
-      decoration: BoxDecoration(boxShadow: <BoxShadow>[
-        BoxShadow(color: Colors.black54, blurRadius: 15.0, offset: Offset(0, 8))
-      ], color: bgColor, borderRadius: BorderRadius.circular(15)),
+      decoration: decoration,
       child: Stack(
         children: <Widget>[
           Container(

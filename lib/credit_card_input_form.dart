@@ -25,26 +25,26 @@ class CreditCardInputForm extends StatelessWidget {
   CreditCardInputForm(
       {this.onStateChange,
       this.cardHeight,
-      this.frontCardColor,
-      this.backCardColor,
+      this.frontCardDecoration,
+      this.backCardDecoration,
       this.showResetButton = true,
       this.customCaptions,
       this.nextButtonTextStyle = kDefaultButtonTextStyle,
       this.prevButtonTextStyle = kDefaultButtonTextStyle,
       this.resetButtonTextStyle = kDefaultButtonTextStyle,
-      this.nextButtonStyle = defaultNextPrevButtonStyle,
-      this.prevButtonStyle = defaultNextPrevButtonStyle,
-      this.resetButtonStyle = defaultResetButtonStyle});
+      this.nextButtonDecoration = defaultNextPrevButtonDecoration,
+      this.prevButtonDecoration = defaultNextPrevButtonDecoration,
+      this.resetButtonDecoration = defaultResetButtonDecoration});
 
   final Function onStateChange;
   final double cardHeight;
-  final Color frontCardColor;
-  final Color backCardColor;
+  final BoxDecoration frontCardDecoration;
+  final BoxDecoration backCardDecoration;
   final bool showResetButton;
   final Map<String, String> customCaptions;
-  final BoxDecoration nextButtonStyle;
-  final BoxDecoration prevButtonStyle;
-  final BoxDecoration resetButtonStyle;
+  final BoxDecoration nextButtonDecoration;
+  final BoxDecoration prevButtonDecoration;
+  final BoxDecoration resetButtonDecoration;
   final TextStyle nextButtonTextStyle;
   final TextStyle prevButtonTextStyle;
   final TextStyle resetButtonTextStyle;
@@ -74,13 +74,13 @@ class CreditCardInputForm extends StatelessWidget {
       ],
       child: CreditCardInputImpl(
         onCardModelChanged: onStateChange,
-        backCardColor: backCardColor,
-        frontCardColor: frontCardColor,
+        backDecoration: backCardDecoration,
+        frontDecoration: frontCardDecoration,
         cardHeight: cardHeight,
         showResetButton: showResetButton,
-        prevButtonStyle: prevButtonStyle,
-        nextButtonStyle: nextButtonStyle,
-        resetButtonStyle: resetButtonStyle,
+        prevButtonDecoration: prevButtonDecoration,
+        nextButtonDecoration: nextButtonDecoration,
+        resetButtonDecoration: resetButtonDecoration,
         prevButtonTextStyle: prevButtonTextStyle,
         nextButtonTextStyle: nextButtonTextStyle,
         resetButtonTextStyle: resetButtonTextStyle,
@@ -92,12 +92,12 @@ class CreditCardInputForm extends StatelessWidget {
 class CreditCardInputImpl extends StatefulWidget {
   final CardInfoCallback onCardModelChanged;
   final double cardHeight;
-  final Color frontCardColor;
-  final Color backCardColor;
+  final BoxDecoration frontDecoration;
+  final BoxDecoration backDecoration;
   final bool showResetButton;
-  final BoxDecoration nextButtonStyle;
-  final BoxDecoration prevButtonStyle;
-  final BoxDecoration resetButtonStyle;
+  final BoxDecoration nextButtonDecoration;
+  final BoxDecoration prevButtonDecoration;
+  final BoxDecoration resetButtonDecoration;
   final TextStyle nextButtonTextStyle;
   final TextStyle prevButtonTextStyle;
   final TextStyle resetButtonTextStyle;
@@ -106,14 +106,14 @@ class CreditCardInputImpl extends StatefulWidget {
       {this.onCardModelChanged,
       this.cardHeight,
       this.showResetButton,
-      this.frontCardColor,
-      this.backCardColor,
+      this.frontDecoration,
+      this.backDecoration,
       this.nextButtonTextStyle,
       this.prevButtonTextStyle,
       this.resetButtonTextStyle,
-      this.nextButtonStyle,
-      this.prevButtonStyle,
-      this.resetButtonStyle});
+      this.nextButtonDecoration,
+      this.prevButtonDecoration,
+      this.resetButtonDecoration});
 
   @override
   _CreditCardInputImplState createState() => _CreditCardInputImplState();
@@ -167,12 +167,12 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
       cardHeight = cardWidth / cardRatio;
     }
 
-    final frontCardColor = widget.frontCardColor != null
-        ? widget.frontCardColor
-        : const Color(0xFF5D5D5E);
-    final backCardColor = widget.frontCardColor != null
-        ? widget.backCardColor
-        : const Color(0xFF5D5D5E);
+    final frontDecoration = widget.frontDecoration != null
+        ? widget.frontDecoration
+        : defaultCardDecoration;
+    final backDecoration = widget.backDecoration != null
+        ? widget.backDecoration
+        : defaultCardDecoration;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -183,8 +183,9 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
             speed: 300,
             flipOnTouch: _currentState == InputState.DONE,
             key: cardKey,
-            front: FrontCardView(height: cardHeight, bgColor: frontCardColor),
-            back: BackCardView(height: cardHeight, bgColor: backCardColor),
+            front:
+                FrontCardView(height: cardHeight, decoration: frontDecoration),
+            back: BackCardView(height: cardHeight, decoration: backDecoration),
           ),
         ),
         Stack(
@@ -207,7 +208,7 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ResetButton(
-                        style: widget.resetButtonStyle,
+                        decoration: widget.resetButtonDecoration,
                         textStyle: widget.resetButtonTextStyle,
                         onTap: () {
                           if (!widget.showResetButton) {
@@ -236,7 +237,7 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
                 : 1,
             duration: Duration(milliseconds: 500),
             child: RoundButton(
-                style: widget.prevButtonStyle,
+                decoration: widget.prevButtonDecoration,
                 textStyle: widget.prevButtonTextStyle,
                 buttonTitle: captions.getCaption('PREV'),
                 onTap: () {
@@ -264,7 +265,7 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
             opacity: _currentState == InputState.DONE ? 0 : 1,
             duration: Duration(milliseconds: 500),
             child: RoundButton(
-                style: widget.nextButtonStyle,
+                decoration: widget.nextButtonDecoration,
                 textStyle: widget.nextButtonTextStyle,
                 buttonTitle: _currentState == InputState.CVV ||
                         _currentState == InputState.DONE

@@ -11,7 +11,7 @@
       alt="Platform" />
   </a>
   <a href="https://pub.dev/packages/credit_card_input_form">
-   <img src="https://img.shields.io/badge/pub-v1.3.1-blue" />
+   <img src="https://img.shields.io/badge/pub-v2.0.0-red" />
 
 </a>
 <a href="https://github.com/Solido/awesome-flutter">
@@ -42,7 +42,7 @@ This package provides visually beautiful UX through animation of credit card inf
     
 ```dart
 dependencies:
-    credit_card_input_form: ^1.3.1
+    credit_card_input_form: ^2.0.0
 ```
 
 2. Import the package
@@ -57,14 +57,20 @@ import 'package:credit_card_input_form/credit_card_input_form.dart';
 ```dart
  CreditCardInputForm(
    cardHeight: 170,
-   frontCardColor: Colors.red,
-   backCardColor: Colors.blueAccent,
    showResetButton : true,
    onStateChange: (currentState, cardInfo) {
      print(currentState);
      print(cardInfo);
    },
-   customCaptions: {...},  // translate and customize captions (see Example)
+   customCaptions: {...}, 
+   frontCardDecoration: cardDecoration,
+   backCardDecoration: cardDecoration,
+   prevButtonDecoration: buttonStyle,
+   nextButtonDecoration: buttonStyle,
+   resetButtonDecoration : buttonStyle,
+   prevButtonTextStyle: buttonTextStyle,
+   nextButtonTextStyle: buttonTextStyle,
+   resetButtonTextStyle: buttonTextStyle,
 ),
 ```
 
@@ -86,7 +92,7 @@ added custom button style feature
 </div>
 
 ~~~dart
-final buttonStyle = BoxDecoration(
+final buttonDecoration = BoxDecoration(
     borderRadius: BorderRadius.circular(30.0),
     gradient: LinearGradient(
         colors: [
@@ -103,14 +109,8 @@ final buttonStyle = BoxDecoration(
       TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18);
 
   CreditCardInputForm(
-    showResetButton: true,
-    onStateChange: (currentState, cardInfo) {
-      print(currentState);
-      print(cardInfo);
-    },
-    customCaptions: customCaptions,
-    prevButtonStyle: buttonStyle,
-    nextButtonStyle: buttonStyle,
+    prevButtonDecoration: buttonDecoration,
+    nextButtonDecoration: buttonDecoration,
     prevButtonTextStyle: buttonTextStyle,
     nextButtonTextStyle: buttonTextStyle,
     resetButtonTextStyle: buttonTextStyle,
@@ -118,6 +118,40 @@ final buttonStyle = BoxDecoration(
 
 ~~~
 
+### v2.0.0
+
+It provides more options using boxdecoration that can only change the color of the card.
+
+<div align="center">
+
+|Default(Only change background color)|Custom|
+|------|---|
+|![image](https://user-images.githubusercontent.com/35194820/89976756-434ba680-dca4-11ea-8297-ed7dccbfb6e6.png)|![image](https://user-images.githubusercontent.com/35194820/89976725-2b742280-dca4-11ea-8771-9e3bd9690ee0.png)|
+</div>
+
+~~~dart
+  final cardDecoration = BoxDecoration(
+    boxShadow: <BoxShadow>[
+      BoxShadow(color: Colors.black54, blurRadius: 15.0, offset: Offset(0, 8))
+    ],
+    gradient: LinearGradient(
+        colors: [
+          Colors.red,
+          Colors.blue,
+        ],
+        begin: const FractionalOffset(0.0, 0.0),
+        end: const FractionalOffset(1.0, 0.0),
+        stops: [0.0, 1.0],
+        tileMode: TileMode.clamp),
+    borderRadius: BorderRadius.all(Radius.circular(15)));
+
+
+    CreditCardInputForm(
+      frontCardDecoration: cardDecoration,
+      backCardDecoration: cardDecoration,
+    ),
+  ]),
+~~~
 
 ## 3rd party library
 
@@ -141,4 +175,4 @@ This package's animation is inspired from from this [Dribbble](https://dribbble.
 ## TODO List
 
 - [x] add `RESET` button
-- [ ] add box decoration param
+- [x] add box decoration param

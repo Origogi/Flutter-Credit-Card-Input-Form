@@ -42,3 +42,7 @@
 ## 1.3.1
 
 * removed duplicated code
+
+## 2.0.0
+
+* added custom card boxdecoration
