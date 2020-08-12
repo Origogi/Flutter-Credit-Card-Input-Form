@@ -11,7 +11,7 @@
       alt="Platform" />
   </a>
   <a href="https://pub.dev/packages/credit_card_input_form">
-   <img src="https://img.shields.io/badge/pub-v2.0.0-red" />
+   <img src="https://img.shields.io/badge/pub-v2.0.1-red" />
 
 </a>
 <a href="https://github.com/Solido/awesome-flutter">
@@ -124,7 +124,7 @@ It provides more options using boxdecoration that can only change the color of t
 
 <div align="center">
 
-|Default(Only change background color)|Custom|
+|Default|Custom|
 |------|---|
 |![image](https://user-images.githubusercontent.com/35194820/89976756-434ba680-dca4-11ea-8297-ed7dccbfb6e6.png)|![image](https://user-images.githubusercontent.com/35194820/89976725-2b742280-dca4-11ea-8771-9e3bd9690ee0.png)|
 </div>

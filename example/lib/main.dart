@@ -77,8 +77,8 @@ class _MyAppState extends State<MyApp> {
                   print(cardInfo);
                 },
                 customCaptions: customCaptions,
-                // frontCardDecoration: cardDecoration,
-                // backCardDecoration: cardDecoration,
+                frontCardDecoration: cardDecoration,
+                backCardDecoration: cardDecoration,
                 // prevButtonStyle: buttonStyle,
                 // nextButtonStyle: buttonStyle,
                 // prevButtonTextStyle: buttonTextStyle,

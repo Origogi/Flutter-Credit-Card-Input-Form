@@ -46,3 +46,7 @@
 ## 2.0.0
 
 * added custom card boxdecoration
+
+## 2.0.1
+
+* fix readme
