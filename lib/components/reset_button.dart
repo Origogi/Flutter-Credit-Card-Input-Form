@@ -39,16 +39,7 @@ class _ResetButtonState extends State<ResetButton> {
           height: 45 - (pressed ? 5.0 : 0.0),
           decoration: widget.decoration,
           child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.refresh,
-                  color: Colors.white,
-                ),
-                Text(captions.getCaption('RESET'), style: widget.textStyle)
-              ],
-            ),
+            child: Text(captions.getCaption('RESET'), style: widget.textStyle),
           )),
     );
   }
