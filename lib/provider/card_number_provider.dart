@@ -4,7 +4,8 @@ class CardNumberProvider with ChangeNotifier {
   var _cardNumber = '';
 
   void setNumber(String newValue) {
-    if (newValue.isNotEmpty && newValue[newValue.length - 1] == ' ') {
+    if (!_isValid(newValue)) {
+    } else if (newValue.isNotEmpty && newValue[newValue.length - 1] == ' ') {
       _cardNumber = newValue.substring(0, newValue.length - 1);
     } else {
       newValue = newValue.replaceAll(" ", "");
@@ -23,4 +24,11 @@ class CardNumberProvider with ChangeNotifier {
   }
 
   get cardNumber => _cardNumber;
+
+  bool _isValid(String string) {
+    if (string == null) {
+      return false;
+    }
+    return double.tryParse(string.replaceAll(' ', '')) != null;
+  }
 }
