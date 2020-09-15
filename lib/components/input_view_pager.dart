@@ -1,4 +1,5 @@
 import 'package:credit_card_input_form/constants/captions.dart';
+import 'package:credit_card_input_form/util/util.dart';
 import 'package:flutter/material.dart';
 import 'package:credit_card_input_form/constants/constanst.dart';
 import 'package:credit_card_input_form/provider/card_cvv_provider.dart';
@@ -116,7 +117,14 @@ class _InputFormState extends State<InputForm> {
       maxLength = 5;
       textInputType = TextInputType.number;
     } else if (widget.index == InputState.CVV.index) {
-      maxLength = 3;
+      String cardNumber =
+          Provider.of<CardNumberProvider>(context, listen: false).cardNumber;
+
+      if (CardCompany.AMERICAN_EXPRESS == detectCardCompany(cardNumber)) {
+        maxLength = 4;
+      } else {
+        maxLength = 3;
+      }
       textInputType = TextInputType.number;
     }
   }
