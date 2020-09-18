@@ -58,3 +58,7 @@
 ## 2.0.3
 
 * If the card number is Amex, the CVC code will be 4 digits, otherwise it will be 3 digits.
+
+## 2.0.4
+
+* Removed unused library
