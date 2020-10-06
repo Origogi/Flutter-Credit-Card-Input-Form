@@ -15,7 +15,6 @@ class CardSign extends StatelessWidget {
         String cardName = provider.cardName;
 
         if (cardName.isNotEmpty) {
-          print(cardName);
           cardName = cardName
               .split(' ')
               .map((e) => e.isNotEmpty
