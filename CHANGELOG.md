@@ -62,3 +62,7 @@
 ## 2.0.4
 
 * Removed unused library
+
+## 2.0.5
+
+* Removed debug message

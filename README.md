@@ -11,7 +11,7 @@
       alt="Platform" />
   </a>
   <a href="https://pub.dev/packages/credit_card_input_form">
-   <img src="https://img.shields.io/badge/pub-v2.0.4-red" />
+   <img src="https://img.shields.io/badge/pub-v2.0.5-red" />
 
 </a>
 <a href="https://github.com/Solido/awesome-flutter">
