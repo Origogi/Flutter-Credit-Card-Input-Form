@@ -70,3 +70,7 @@
 ## 2.1.0
 
 * implement a new feature to add an initial value when creating a widget
+
+## 2.1.1
+
+* Fix readme
