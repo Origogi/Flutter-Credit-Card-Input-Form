@@ -66,3 +66,7 @@
 ## 2.0.5
 
 * Removed debug message
+
+## 2.1.0
+
+* implement a new feature to add an initial value when creating a widget

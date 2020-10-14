@@ -153,6 +153,37 @@ It provides more options using boxdecoration that can only change the color of t
   ]),
 ~~~
 
+### v2.1.0
+
+implement a new feature to add an initial value when creating a widget
+
+<table>
+<tr>
+<td> Code </td> <td> Preview </td>
+</tr>
+<tr>
+<td> 
+
+~~~dart
+CreditCardInputForm(
+  ....
+  cardCVV: '222',
+  cardName: 'Jeongtae Kim',
+  cardNumber: '1111111111111111',
+  cardValid: '12/12',
+  intialCardState: InputState.DONE,
+),
+~~~
+</td>
+<td>
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/35194820/96005684-a958d380-0e77-11eb-8b5e-f9dd889c875f.gif)
+
+
+</td>
+</tr>
+</table>
+
 ## 3rd party library
 
 ### Flip card
