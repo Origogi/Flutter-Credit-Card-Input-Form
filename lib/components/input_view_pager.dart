@@ -177,8 +177,6 @@ class _InputFormState extends State<InputForm> {
         .getCurrentState()
         .index;
 
-    // print("$index ${widget.index he ${widget.index == index}");
-
     return Opacity(
       opacity: opacicy,
       child: Container(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:credit_card_input_form/constants/constanst.dart';
 
 class StateProvider with ChangeNotifier {
-  var _currentState;
+  InputState _currentState;
 
   StateProvider(initValue) {
     _currentState = initValue;
@@ -16,26 +16,21 @@ class StateProvider with ChangeNotifier {
     InputState.DONE
   ];
 
-  var currentIndex = 0;
-
   void moveNextState() {
-    if (currentIndex < _states.length - 1) {
-      currentIndex++;
-      _currentState = _states[currentIndex];
+    if (_currentState.index < _states.length - 1) {
+      _currentState = _states[_currentState.index + 1];
       notifyListeners();
     }
   }
 
   void moveFirstState() {
-    currentIndex = 0;
-    _currentState = _states[currentIndex];
+    _currentState = _states[0];
     notifyListeners();
   }
 
   void movePrevState() {
-    if (currentIndex > 0) {
-      currentIndex--;
-      _currentState = _states[currentIndex];
+    if (_currentState.index > 0) {
+      _currentState = _states[_currentState.index - 1];
       notifyListeners();
     }
   }

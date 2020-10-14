@@ -9,7 +9,8 @@ import 'package:credit_card_input_form/constants/constanst.dart';
 class YellowBorder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final currentState = Provider.of<StateProvider>(context).getCurrentState();
+    final currentState =
+        Provider.of<StateProvider>(context, listen: true).getCurrentState();
 
     final align = getAlign(currentState);
     final height = getHeight(currentState);

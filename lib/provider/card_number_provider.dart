@@ -4,12 +4,18 @@ class CardNumberProvider with ChangeNotifier {
   var _cardNumber;
 
   CardNumberProvider(initValue) {
-    _cardNumber = initValue;
+    _cardNumber = addSpaceToCardNumber(initValue);
   }
 
   void setNumber(String newValue) {
+    _cardNumber = addSpaceToCardNumber(newValue);
+
+    notifyListeners();
+  }
+
+  String addSpaceToCardNumber(String newValue) {
     if (newValue.isNotEmpty && newValue[newValue.length - 1] == ' ') {
-      _cardNumber = newValue.substring(0, newValue.length - 1);
+      return newValue.substring(0, newValue.length - 1);
     } else {
       newValue = newValue.replaceAll(" ", "");
       String cardNumber = "";
@@ -20,10 +26,8 @@ class CardNumberProvider with ChangeNotifier {
           cardNumber = cardNumber + ' ';
         }
       }
-      _cardNumber = cardNumber;
+      return cardNumber;
     }
-
-    notifyListeners();
   }
 
   get cardNumber => _cardNumber;
