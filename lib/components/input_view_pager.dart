@@ -10,17 +10,27 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:credit_card_input_form/provider/card_number_provider.dart';
 
-class InputViewPager extends StatelessWidget {
+class InputViewPager extends StatefulWidget {
   final pageController;
 
   InputViewPager({this.pageController});
 
+  @override
+  _InputViewPagerState createState() => _InputViewPagerState();
+}
+
+class _InputViewPagerState extends State<InputViewPager> {
   final List<FocusNode> focusNodes = [
     FocusNode(),
     FocusNode(),
     FocusNode(),
     FocusNode(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,24 +43,35 @@ class InputViewPager extends StatelessWidget {
       3: captions.getCaption('SECURITY_CODE_CVC'),
     };
 
-    Provider.of<StateProvider>(context).addListener(() {
-      int index = Provider.of<StateProvider>(context, listen: false)
-          .getCurrentState()
-          .index;
+    int index = Provider.of<StateProvider>(context, listen: true)
+        .getCurrentState()
+        .index;
 
-      if (index < focusNodes.length) {
-        FocusScope.of(context).requestFocus(focusNodes[index]);
-      } else {
-        FocusScope.of(context).unfocus();
-        SystemChannels.textInput.invokeMethod('TextInput.hide');
-      }
-    });
+    if (index < focusNodes.length) {
+      FocusScope.of(context).requestFocus(focusNodes[index]);
+    } else {
+      FocusScope.of(context).unfocus();
+      SystemChannels.textInput.invokeMethod('TextInput.hide');
+    }
+
+    // Provider.of<StateProvider>(context).addListener(() {
+    //   int index = Provider.of<StateProvider>(context, listen: false)
+    //       .getCurrentState()
+    //       .index;
+
+    //   if (index < focusNodes.length) {
+    //     FocusScope.of(context).requestFocus(focusNodes[index]);
+    //   } else {
+    //     FocusScope.of(context).unfocus();
+    //     SystemChannels.textInput.invokeMethod('TextInput.hide');
+    //   }
+    // });
 
     return Container(
         height: 86,
         child: PageView.builder(
             physics: NeverScrollableScrollPhysics(),
-            controller: pageController,
+            controller: widget.pageController,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -58,7 +79,7 @@ class InputViewPager extends StatelessWidget {
                     focusNode: focusNodes[index],
                     title: titleMap[index],
                     index: index,
-                    pageController: pageController),
+                    pageController: widget.pageController),
               );
             },
             itemCount: titleMap.length));
