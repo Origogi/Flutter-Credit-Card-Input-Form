@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CardValidProvider with ChangeNotifier {
-  var _cardValid = '';
+  var _cardValid;
+
+  CardValidProvider(initValue) {
+    _cardValid = initValue;
+  }
 
   void setValid(String newValue) {
     if (newValue.length == 3) {

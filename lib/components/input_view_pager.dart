@@ -71,8 +71,12 @@ class InputForm extends StatefulWidget {
   final PageController pageController;
   final FocusNode focusNode;
 
-  InputForm(
-      {@required this.title, this.index, this.pageController, this.focusNode});
+  InputForm({
+    @required this.title,
+    this.index,
+    this.pageController,
+    this.focusNode,
+  });
 
   @override
   _InputFormState createState() => _InputFormState();
@@ -101,7 +105,11 @@ class _InputFormState extends State<InputForm> {
   void initState() {
     super.initState();
 
-    if (widget.index == 0) {
+    int index = Provider.of<StateProvider>(context, listen: false)
+        .getCurrentState()
+        .index;
+
+    if (widget.index == index) {
       opacicy = 1;
     }
 

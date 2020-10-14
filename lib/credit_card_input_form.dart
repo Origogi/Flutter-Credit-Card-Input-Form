@@ -29,6 +29,11 @@ class CreditCardInputForm extends StatelessWidget {
       this.backCardDecoration,
       this.showResetButton = true,
       this.customCaptions,
+      this.cardNumber = '',
+      this.cardName = '',
+      this.cardCVV = '',
+      this.cardValid = '',
+      this.intialCardState = InputState.NUMBER,
       this.nextButtonTextStyle = kDefaultButtonTextStyle,
       this.prevButtonTextStyle = kDefaultButtonTextStyle,
       this.resetButtonTextStyle = kDefaultButtonTextStyle,
@@ -48,43 +53,48 @@ class CreditCardInputForm extends StatelessWidget {
   final TextStyle nextButtonTextStyle;
   final TextStyle prevButtonTextStyle;
   final TextStyle resetButtonTextStyle;
+  final String cardNumber;
+  final String cardName;
+  final String cardCVV;
+  final String cardValid;
+  final InputState intialCardState;
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => StateProvider(),
+          create: (context) => StateProvider(intialCardState),
         ),
         ChangeNotifierProvider(
-          create: (context) => CardNumberProvider(),
+          create: (context) => CardNumberProvider(cardNumber),
         ),
         ChangeNotifierProvider(
-          create: (context) => CardNameProvider(),
+          create: (context) => CardNameProvider(cardName),
         ),
         ChangeNotifierProvider(
-          create: (context) => CardValidProvider(),
+          create: (context) => CardValidProvider(cardValid),
         ),
         ChangeNotifierProvider(
-          create: (context) => CardCVVProvider(),
+          create: (context) => CardCVVProvider(cardCVV),
         ),
         Provider(
           create: (_) => Captions(customCaptions: customCaptions),
         ),
       ],
       child: CreditCardInputImpl(
-        onCardModelChanged: onStateChange,
-        backDecoration: backCardDecoration,
-        frontDecoration: frontCardDecoration,
-        cardHeight: cardHeight,
-        showResetButton: showResetButton,
-        prevButtonDecoration: prevButtonDecoration,
-        nextButtonDecoration: nextButtonDecoration,
-        resetButtonDecoration: resetButtonDecoration,
-        prevButtonTextStyle: prevButtonTextStyle,
-        nextButtonTextStyle: nextButtonTextStyle,
-        resetButtonTextStyle: resetButtonTextStyle,
-      ),
+          onCardModelChanged: onStateChange,
+          backDecoration: backCardDecoration,
+          frontDecoration: frontCardDecoration,
+          cardHeight: cardHeight,
+          showResetButton: showResetButton,
+          prevButtonDecoration: prevButtonDecoration,
+          nextButtonDecoration: nextButtonDecoration,
+          resetButtonDecoration: resetButtonDecoration,
+          prevButtonTextStyle: prevButtonTextStyle,
+          nextButtonTextStyle: nextButtonTextStyle,
+          resetButtonTextStyle: resetButtonTextStyle,
+          cardStateIndex: intialCardState.index),
     );
   }
 }
@@ -101,6 +111,7 @@ class CreditCardInputImpl extends StatefulWidget {
   final TextStyle nextButtonTextStyle;
   final TextStyle prevButtonTextStyle;
   final TextStyle resetButtonTextStyle;
+  final int cardStateIndex;
 
   CreditCardInputImpl(
       {this.onCardModelChanged,
@@ -113,6 +124,7 @@ class CreditCardInputImpl extends StatefulWidget {
       this.resetButtonTextStyle,
       this.nextButtonDecoration,
       this.prevButtonDecoration,
+      this.cardStateIndex,
       this.resetButtonDecoration});
 
   @override
@@ -120,10 +132,7 @@ class CreditCardInputImpl extends StatefulWidget {
 }
 
 class _CreditCardInputImplState extends State<CreditCardInputImpl> {
-  final PageController pageController = PageController(
-    viewportFraction: 0.92,
-    initialPage: 0,
-  );
+  PageController pageController;
 
   final GlobalKey<FlipCardState> cardKey = GlobalKey<FlipCardState>();
 
@@ -131,6 +140,15 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
   final cardRatio = 16.0 / 9.0;
 
   var _currentState = InputState.NUMBER;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController(
+      viewportFraction: 0.92,
+      initialPage: widget.cardStateIndex,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

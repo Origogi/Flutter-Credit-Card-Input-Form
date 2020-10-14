@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CardNumberProvider with ChangeNotifier {
-  var _cardNumber = '';
+  var _cardNumber;
+
+  CardNumberProvider(initValue) {
+    _cardNumber = initValue;
+  }
 
   void setNumber(String newValue) {
     if (newValue.isNotEmpty && newValue[newValue.length - 1] == ' ') {

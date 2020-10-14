@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:credit_card_input_form/constants/constanst.dart';
 
 class StateProvider with ChangeNotifier {
-  var _currentState = InputState.NUMBER;
+  var _currentState;
+
+  StateProvider(initValue) {
+    _currentState = initValue;
+  }
 
   final _states = [
     InputState.NUMBER,

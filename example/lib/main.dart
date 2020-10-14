@@ -1,3 +1,4 @@
+import 'package:credit_card_input_form/constants/constanst.dart';
 import 'package:flutter/material.dart';
 
 import 'package:credit_card_input_form/credit_card_input_form.dart';
@@ -77,8 +78,13 @@ class _MyAppState extends State<MyApp> {
                   print(cardInfo);
                 },
                 customCaptions: customCaptions,
-                frontCardDecoration: cardDecoration,
-                backCardDecoration: cardDecoration,
+                cardCVV: '222',
+                cardName: 'Jeongtae Kim',
+                cardNumber: '1111111111111111',
+                cardValid: '12/12',
+                intialCardState: InputState.NAME,
+                // frontCardDecoration: cardDecoration,
+                // backCardDecoration: cardDecoration,
                 // prevButtonStyle: buttonStyle,
                 // nextButtonStyle: buttonStyle,
                 // prevButtonTextStyle: buttonTextStyle,
