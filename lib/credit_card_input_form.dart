@@ -83,18 +83,19 @@ class CreditCardInputForm extends StatelessWidget {
         ),
       ],
       child: CreditCardInputImpl(
-          onCardModelChanged: onStateChange,
-          backDecoration: backCardDecoration,
-          frontDecoration: frontCardDecoration,
-          cardHeight: cardHeight,
-          showResetButton: showResetButton,
-          prevButtonDecoration: prevButtonDecoration,
-          nextButtonDecoration: nextButtonDecoration,
-          resetButtonDecoration: resetButtonDecoration,
-          prevButtonTextStyle: prevButtonTextStyle,
-          nextButtonTextStyle: nextButtonTextStyle,
-          resetButtonTextStyle: resetButtonTextStyle,
-          cardStateIndex: intialCardState.index),
+        onCardModelChanged: onStateChange,
+        backDecoration: backCardDecoration,
+        frontDecoration: frontCardDecoration,
+        cardHeight: cardHeight,
+        showResetButton: showResetButton,
+        prevButtonDecoration: prevButtonDecoration,
+        nextButtonDecoration: nextButtonDecoration,
+        resetButtonDecoration: resetButtonDecoration,
+        prevButtonTextStyle: prevButtonTextStyle,
+        nextButtonTextStyle: nextButtonTextStyle,
+        resetButtonTextStyle: resetButtonTextStyle,
+        initialCardState: intialCardState,
+      ),
     );
   }
 }
@@ -111,7 +112,7 @@ class CreditCardInputImpl extends StatefulWidget {
   final TextStyle nextButtonTextStyle;
   final TextStyle prevButtonTextStyle;
   final TextStyle resetButtonTextStyle;
-  final int cardStateIndex;
+  final InputState initialCardState;
 
   CreditCardInputImpl(
       {this.onCardModelChanged,
@@ -124,7 +125,7 @@ class CreditCardInputImpl extends StatefulWidget {
       this.resetButtonTextStyle,
       this.nextButtonDecoration,
       this.prevButtonDecoration,
-      this.cardStateIndex,
+      this.initialCardState,
       this.resetButtonDecoration});
 
   @override
@@ -139,14 +140,17 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
   final cardHorizontalpadding = 12;
   final cardRatio = 16.0 / 9.0;
 
-  var _currentState = InputState.NUMBER;
+  var _currentState;
 
   @override
   void initState() {
     super.initState();
+
+    _currentState = widget.initialCardState;
+
     pageController = PageController(
       viewportFraction: 0.92,
-      initialPage: widget.cardStateIndex,
+      initialPage: widget.initialCardState.index,
     );
   }
 

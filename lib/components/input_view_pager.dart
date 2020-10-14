@@ -43,29 +43,18 @@ class _InputViewPagerState extends State<InputViewPager> {
       3: captions.getCaption('SECURITY_CODE_CVC'),
     };
 
-    int index = Provider.of<StateProvider>(context, listen: true)
-        .getCurrentState()
-        .index;
+    Provider.of<StateProvider>(context).addListener(() {
+      int index = Provider.of<StateProvider>(context, listen: false)
+          .getCurrentState()
+          .index;
 
-    if (index < focusNodes.length) {
-      FocusScope.of(context).requestFocus(focusNodes[index]);
-    } else {
-      FocusScope.of(context).unfocus();
-      SystemChannels.textInput.invokeMethod('TextInput.hide');
-    }
-
-    // Provider.of<StateProvider>(context).addListener(() {
-    //   int index = Provider.of<StateProvider>(context, listen: false)
-    //       .getCurrentState()
-    //       .index;
-
-    //   if (index < focusNodes.length) {
-    //     FocusScope.of(context).requestFocus(focusNodes[index]);
-    //   } else {
-    //     FocusScope.of(context).unfocus();
-    //     SystemChannels.textInput.invokeMethod('TextInput.hide');
-    //   }
-    // });
+      if (index < focusNodes.length) {
+        FocusScope.of(context).requestFocus(focusNodes[index]);
+      } else {
+        FocusScope.of(context).unfocus();
+        SystemChannels.textInput.invokeMethod('TextInput.hide');
+      }
+    });
 
     return Container(
         height: 86,
@@ -173,7 +162,7 @@ class _InputFormState extends State<InputForm> {
 
     if (widget.index == InputState.NUMBER.index) {
       textValue =
-          Provider.of<CardNumberProvider>(context, listen: true).cardNumber;
+          Provider.of<CardNumberProvider>(context, listen: false).cardNumber;
     } else if (widget.index == InputState.NAME.index) {
       textValue =
           Provider.of<CardNameProvider>(context, listen: false).cardName;
@@ -183,6 +172,12 @@ class _InputFormState extends State<InputForm> {
     } else if (widget.index == InputState.CVV.index) {
       textValue = Provider.of<CardCVVProvider>(context).cardCVV;
     }
+
+    int index = Provider.of<StateProvider>(context, listen: false)
+        .getCurrentState()
+        .index;
+
+    // print("$index ${widget.index he ${widget.index == index}");
 
     return Opacity(
       opacity: opacicy,
@@ -198,7 +193,7 @@ class _InputFormState extends State<InputForm> {
               height: 5,
             ),
             TextField(
-              autofocus: widget.index == 0,
+              autofocus: widget.index == index,
               controller: textController
                 ..value = textController.value.copyWith(
                   text: textValue,
