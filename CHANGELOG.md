@@ -74,3 +74,7 @@
 ## 2.1.1
 
 * Fix readme
+
+## 2.1.2
+
+* Fix card number overflow in smaller devices like iPhone SE.
