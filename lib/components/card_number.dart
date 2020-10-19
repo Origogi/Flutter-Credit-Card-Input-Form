@@ -23,17 +23,20 @@ class CardNumber extends StatelessWidget {
     return Container(
       child: Padding(
         padding: const EdgeInsets.only(left: 5),
-        child: Row(
-          children: <Widget>[
-            Text(
-              cardNumber,
-              style: kCardNumberTextStyle,
-            ),
-            Text(
-              defaultNumber,
-              style: kCardDefaultTextStyle,
-            )
-          ],
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            children: <Widget>[
+              Text(
+                cardNumber,
+                style: kCardNumberTextStyle,
+              ),
+              Text(
+                defaultNumber,
+                style: kCardDefaultTextStyle,
+              )
+            ],
+          ),
         ),
       ),
     );

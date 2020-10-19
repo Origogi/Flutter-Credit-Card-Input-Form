@@ -191,6 +191,7 @@ class _InputFormState extends State<InputForm> {
               height: 5,
             ),
             TextField(
+              autocorrect: false,
               autofocus: widget.index == index,
               controller: textController
                 ..value = textController.value.copyWith(
