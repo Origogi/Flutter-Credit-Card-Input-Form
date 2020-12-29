@@ -81,4 +81,8 @@
 
 ## 2.1.3
 
+* Fix readme
+
+## 2.1.4
+
 * Fix text field bottom overflow 4 pixels in Samsung device.
