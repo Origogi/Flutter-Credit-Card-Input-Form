@@ -77,12 +77,12 @@ class _MyAppState extends State<MyApp> {
                   print(currentState);
                   print(cardInfo);
                 },
-                customCaptions: customCaptions,
-                cardCVV: '222',
-                cardName: 'Jeongtae Kim',
-                cardNumber: '1111111111111111',
-                cardValid: '12/12',
-                intialCardState: InputState.DONE,
+                // customCaptions: customCaptions,
+                // cardCVV: '222',
+                // cardName: 'Jeongtae Kim',
+                // cardNumber: '1111111111111111',
+                // cardValid: '12/12',
+                // intialCardState: InputState.DONE,
                 // frontCardDecoration: cardDecoration,
                 // backCardDecoration: cardDecoration,
                 // prevButtonStyle: buttonStyle,

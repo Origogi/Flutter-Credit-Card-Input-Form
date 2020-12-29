@@ -78,3 +78,7 @@
 ## 2.1.2
 
 * Fix card number overflow in smaller devices like iPhone SE.
+
+## 2.1.3
+
+* Fix text field bottom overflow 4 pixels in Samsung device.

@@ -57,7 +57,7 @@ class _InputViewPagerState extends State<InputViewPager> {
     });
 
     return Container(
-        height: 86,
+        height: 90,
         child: PageView.builder(
             physics: NeverScrollableScrollPhysics(),
             controller: widget.pageController,
