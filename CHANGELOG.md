@@ -86,3 +86,7 @@
 ## 2.1.4
 
 * Fix text field bottom overflow 4 pixels in Samsung device.
+
+## 2.1.5
+
+* Prevents characters from being entered into the card number
