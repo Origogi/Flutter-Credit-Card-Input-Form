@@ -14,7 +14,7 @@ class CardNumberProvider with ChangeNotifier {
   }
 
   String addSpaceToCardNumber(String newValue) {
-    newValue = newValue.replaceAll(RegExp("[a-zA-Z]"), '');
+    newValue = newValue.replaceAll(RegExp(r'[^0-9]'), '');
 
     if (newValue.isNotEmpty && newValue[newValue.length - 1] == ' ') {
       return newValue.substring(0, newValue.length - 1);

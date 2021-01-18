@@ -90,3 +90,7 @@
 ## 2.1.5
 
 * Prevents characters from being entered into the card number
+
+## 2.1.6
+
+* Prevents special characters from being entered into the card number
