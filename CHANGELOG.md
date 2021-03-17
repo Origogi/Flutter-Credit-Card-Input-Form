@@ -94,3 +94,7 @@
 ## 2.1.6
 
 * Prevents special characters from being entered into the card number
+
+### v2.2.0
+
+Add initial autofocus parameter

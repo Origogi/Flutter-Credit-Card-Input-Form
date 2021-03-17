@@ -11,7 +11,7 @@
       alt="Platform" />
   </a>
   <a href="https://pub.dev/packages/credit_card_input_form">
-   <img src="https://img.shields.io/badge/pub-v2.1.6-red" />
+   <img src="https://img.shields.io/badge/pub-v2.2.0-red" />
 
 </a>
 <a href="https://github.com/Solido/awesome-flutter">
@@ -42,7 +42,7 @@ This package provides visually beautiful UX through animation of credit card inf
     
 ```dart
 dependencies:
-    credit_card_input_form: ^2.1.6
+    credit_card_input_form: ^2.2.0
 ```
 
 2. Import the package
@@ -71,6 +71,8 @@ import 'package:credit_card_input_form/credit_card_input_form.dart';
    prevButtonTextStyle: buttonTextStyle,
    nextButtonTextStyle: buttonTextStyle,
    resetButtonTextStyle: buttonTextStyle,
+   initialAutoFocus: true, // optional
+
 ),
 ```
 
@@ -183,6 +185,10 @@ CreditCardInputForm(
 </td>
 </tr>
 </table>
+
+### v2.2.0
+
+Add `initialAutoFocus` parameter
 
 ## 3rd party library
 

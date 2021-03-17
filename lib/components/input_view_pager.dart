@@ -12,8 +12,9 @@ import 'package:credit_card_input_form/provider/card_number_provider.dart';
 
 class InputViewPager extends StatefulWidget {
   final pageController;
+  final isAutoFoucus;
 
-  InputViewPager({this.pageController});
+  InputViewPager({this.pageController, this.isAutoFoucus});
 
   @override
   _InputViewPagerState createState() => _InputViewPagerState();
@@ -65,6 +66,7 @@ class _InputViewPagerState extends State<InputViewPager> {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InputForm(
+                    isAutoFocus: widget.isAutoFoucus,
                     focusNode: focusNodes[index],
                     title: titleMap[index],
                     index: index,
@@ -80,13 +82,14 @@ class InputForm extends StatefulWidget {
   final int index;
   final PageController pageController;
   final FocusNode focusNode;
+  final isAutoFocus;
 
-  InputForm({
-    @required this.title,
-    this.index,
-    this.pageController,
-    this.focusNode,
-  });
+  InputForm(
+      {@required this.title,
+      this.index,
+      this.pageController,
+      this.focusNode,
+      this.isAutoFocus});
 
   @override
   _InputFormState createState() => _InputFormState();
@@ -192,7 +195,7 @@ class _InputFormState extends State<InputForm> {
             ),
             TextField(
               autocorrect: false,
-              autofocus: widget.index == index,
+              autofocus: widget.isAutoFocus && widget.index == index,
               controller: textController
                 ..value = textController.value.copyWith(
                   text: textValue,

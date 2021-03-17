@@ -33,6 +33,7 @@ class CreditCardInputForm extends StatelessWidget {
       this.cardName = '',
       this.cardCVV = '',
       this.cardValid = '',
+      this.initialAutoFocus = true,
       this.intialCardState = InputState.NUMBER,
       this.nextButtonTextStyle = kDefaultButtonTextStyle,
       this.prevButtonTextStyle = kDefaultButtonTextStyle,
@@ -57,6 +58,7 @@ class CreditCardInputForm extends StatelessWidget {
   final String cardName;
   final String cardCVV;
   final String cardValid;
+  final initialAutoFocus;
   final InputState intialCardState;
 
   @override
@@ -87,6 +89,7 @@ class CreditCardInputForm extends StatelessWidget {
         backDecoration: backCardDecoration,
         frontDecoration: frontCardDecoration,
         cardHeight: cardHeight,
+        initialAutoFocus: initialAutoFocus,
         showResetButton: showResetButton,
         prevButtonDecoration: prevButtonDecoration,
         nextButtonDecoration: nextButtonDecoration,
@@ -113,6 +116,7 @@ class CreditCardInputImpl extends StatefulWidget {
   final TextStyle prevButtonTextStyle;
   final TextStyle resetButtonTextStyle;
   final InputState initialCardState;
+  final initialAutoFocus;
 
   CreditCardInputImpl(
       {this.onCardModelChanged,
@@ -126,6 +130,7 @@ class CreditCardInputImpl extends StatefulWidget {
       this.nextButtonDecoration,
       this.prevButtonDecoration,
       this.initialCardState,
+      this.initialAutoFocus,
       this.resetButtonDecoration});
 
   @override
@@ -216,6 +221,7 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
               opacity: _currentState == InputState.DONE ? 0 : 1,
               duration: Duration(milliseconds: 500),
               child: InputViewPager(
+                isAutoFoucus: widget.initialAutoFocus,
                 pageController: pageController,
               ),
             ),

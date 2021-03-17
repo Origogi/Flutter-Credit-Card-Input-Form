@@ -77,6 +77,7 @@ class _MyAppState extends State<MyApp> {
                   print(currentState);
                   print(cardInfo);
                 },
+                // initialAutoFocus: false,
                 // customCaptions: customCaptions,
                 // cardCVV: '222',
                 // cardName: 'Jeongtae Kim',
