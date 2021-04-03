@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../constants/constanst.dart';
 
 class RoundButton extends StatefulWidget {
-  final Function onTap;
+  final Function? onTap;
   final buttonTitle;
   final decoration;
   final textStyle;
@@ -23,7 +23,7 @@ class _RoundButtonState extends State<RoundButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.onTap,
+      onTap: widget.onTap as void Function()?,
       onTapDown: (_) {
         final currentState = Provider.of<StateProvider>(context, listen: false)
             .getCurrentState();

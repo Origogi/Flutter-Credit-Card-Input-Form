@@ -58,7 +58,7 @@ class YellowBorder extends StatelessWidget {
     return align;
   }
 
-  double getHeight(InputState currentState) {
+  double getHeight(InputState? currentState) {
     var height = 0.0;
     switch (currentState) {
       case InputState.NUMBER:
@@ -98,7 +98,7 @@ class YellowBorder extends StatelessWidget {
     return width;
   }
 
-  getMargin(InputState currentState) {
+  getMargin(InputState? currentState) {
     var lefrMargin = 0.0;
     var rightMargin = 0.0;
     switch (currentState) {

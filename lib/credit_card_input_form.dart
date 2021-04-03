@@ -42,12 +42,12 @@ class CreditCardInputForm extends StatelessWidget {
       this.prevButtonDecoration = defaultNextPrevButtonDecoration,
       this.resetButtonDecoration = defaultResetButtonDecoration});
 
-  final Function onStateChange;
-  final double cardHeight;
-  final BoxDecoration frontCardDecoration;
-  final BoxDecoration backCardDecoration;
+  final Function? onStateChange;
+  final double? cardHeight;
+  final BoxDecoration? frontCardDecoration;
+  final BoxDecoration? backCardDecoration;
   final bool showResetButton;
-  final Map<String, String> customCaptions;
+  final Map<String, String>? customCaptions;
   final BoxDecoration nextButtonDecoration;
   final BoxDecoration prevButtonDecoration;
   final BoxDecoration resetButtonDecoration;
@@ -85,7 +85,8 @@ class CreditCardInputForm extends StatelessWidget {
         ),
       ],
       child: CreditCardInputImpl(
-        onCardModelChanged: onStateChange,
+        onCardModelChanged:
+            onStateChange as void Function(InputState, CardInfo)?,
         backDecoration: backCardDecoration,
         frontDecoration: frontCardDecoration,
         cardHeight: cardHeight,
@@ -104,18 +105,18 @@ class CreditCardInputForm extends StatelessWidget {
 }
 
 class CreditCardInputImpl extends StatefulWidget {
-  final CardInfoCallback onCardModelChanged;
-  final double cardHeight;
-  final BoxDecoration frontDecoration;
-  final BoxDecoration backDecoration;
-  final bool showResetButton;
-  final BoxDecoration nextButtonDecoration;
-  final BoxDecoration prevButtonDecoration;
-  final BoxDecoration resetButtonDecoration;
-  final TextStyle nextButtonTextStyle;
-  final TextStyle prevButtonTextStyle;
-  final TextStyle resetButtonTextStyle;
-  final InputState initialCardState;
+  final CardInfoCallback? onCardModelChanged;
+  final double? cardHeight;
+  final BoxDecoration? frontDecoration;
+  final BoxDecoration? backDecoration;
+  final bool? showResetButton;
+  final BoxDecoration? nextButtonDecoration;
+  final BoxDecoration? prevButtonDecoration;
+  final BoxDecoration? resetButtonDecoration;
+  final TextStyle? nextButtonTextStyle;
+  final TextStyle? prevButtonTextStyle;
+  final TextStyle? resetButtonTextStyle;
+  final InputState? initialCardState;
   final initialAutoFocus;
 
   CreditCardInputImpl(
@@ -138,7 +139,7 @@ class CreditCardInputImpl extends StatefulWidget {
 }
 
 class _CreditCardInputImplState extends State<CreditCardInputImpl> {
-  PageController pageController;
+  PageController? pageController;
 
   final GlobalKey<FlipCardState> cardKey = GlobalKey<FlipCardState>();
 
@@ -155,7 +156,7 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
 
     pageController = PageController(
       viewportFraction: 0.92,
-      initialPage: widget.initialCardState.index,
+      initialPage: widget.initialCardState!.index,
     );
   }
 
@@ -177,7 +178,7 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
       _currentState = newState;
 
       Future(() {
-        widget.onCardModelChanged(
+        widget.onCardModelChanged!(
             _currentState,
             CardInfo(
                 name: name, cardNumber: cardNumber, validate: valid, cvv: cvv));
@@ -187,8 +188,8 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
     double cardWidth =
         MediaQuery.of(context).size.width - (2 * cardHorizontalpadding);
 
-    double cardHeight;
-    if (widget.cardHeight != null && widget.cardHeight > 0) {
+    double? cardHeight;
+    if (widget.cardHeight != null && widget.cardHeight! > 0) {
       cardHeight = widget.cardHeight;
     } else {
       cardHeight = cardWidth / cardRatio;
@@ -228,7 +229,7 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
             Align(
                 alignment: Alignment.center,
                 child: AnimatedOpacity(
-                    opacity: widget.showResetButton &&
+                    opacity: widget.showResetButton! &&
                             _currentState == InputState.DONE
                         ? 1
                         : 0,
@@ -239,18 +240,18 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
                         decoration: widget.resetButtonDecoration,
                         textStyle: widget.resetButtonTextStyle,
                         onTap: () {
-                          if (!widget.showResetButton) {
+                          if (!widget.showResetButton!) {
                             return;
                           }
 
                           Provider.of<StateProvider>(context, listen: false)
                               .moveFirstState();
-                          pageController.animateToPage(0,
+                          pageController!.animateToPage(0,
                               duration: Duration(milliseconds: 300),
                               curve: Curves.easeIn);
 
-                          if (!cardKey.currentState.isFront) {
-                            cardKey.currentState.toggleCard();
+                          if (!cardKey.currentState!.isFront) {
+                            cardKey.currentState!.toggleCard();
                           }
                         },
                       ),
@@ -274,13 +275,13 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
                   }
 
                   if (InputState.NUMBER != _currentState) {
-                    pageController.previousPage(
+                    pageController!.previousPage(
                         duration: Duration(milliseconds: 300),
                         curve: Curves.easeIn);
                   }
 
                   if (InputState.CVV == _currentState) {
-                    cardKey.currentState.toggleCard();
+                    cardKey.currentState!.toggleCard();
                   }
                   Provider.of<StateProvider>(context, listen: false)
                       .movePrevState();
@@ -301,13 +302,13 @@ class _CreditCardInputImplState extends State<CreditCardInputImpl> {
                     : captions.getCaption('NEXT'),
                 onTap: () {
                   if (InputState.CVV != _currentState) {
-                    pageController.nextPage(
+                    pageController!.nextPage(
                         duration: Duration(milliseconds: 300),
                         curve: Curves.easeIn);
                   }
 
                   if (InputState.VALIDATE == _currentState) {
-                    cardKey.currentState.toggleCard();
+                    cardKey.currentState!.toggleCard();
                   }
 
                   Provider.of<StateProvider>(context, listen: false)

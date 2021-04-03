@@ -98,3 +98,7 @@
 ### v2.2.0
 
 Add initial autofocus parameter
+
+### v2.3.0
+
+Flutter 2.0 migration

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ResetButton extends StatefulWidget {
-  final Function onTap;
+  final Function? onTap;
   final decoration;
   final textStyle;
 
@@ -21,7 +21,7 @@ class _ResetButtonState extends State<ResetButton> {
     final captions = Provider.of<Captions>(context);
 
     return GestureDetector(
-      onTap: widget.onTap,
+      onTap: widget.onTap as void Function()?,
       onTapDown: (_) {
         setState(() {
           pressed = true;
@@ -46,7 +46,7 @@ class _ResetButtonState extends State<ResetButton> {
                   Icons.refresh,
                   color: Colors.white,
                 ),
-                Text(captions.getCaption('RESET'), style: widget.textStyle)
+                Text(captions.getCaption('RESET')!, style: widget.textStyle)
               ],
             ),
           )),

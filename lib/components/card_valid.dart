@@ -10,7 +10,7 @@ class CardValid extends StatelessWidget {
     String inputCardValid = Provider.of<CardValidProvider>(context).cardValid;
 
     var defaultCardValid = Provider.of<Captions>(context)
-        .getCaption('MM_YY')
+        .getCaption('MM_YY')!
         .substring(inputCardValid.length);
 
     inputCardValid = inputCardValid.replaceAll("/", "");

@@ -8,7 +8,7 @@ class CardName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final defaultName =
-        Provider.of<Captions>(context).getCaption('NAME_SURNAME').toUpperCase();
+        Provider.of<Captions>(context).getCaption('NAME_SURNAME')!.toUpperCase();
     final String name =
         Provider.of<CardNameProvider>(context).cardName.toUpperCase();
 

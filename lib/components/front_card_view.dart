@@ -41,7 +41,7 @@ class FrontCardView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Text(
-                      captions.getCaption('CARDHOLDER_NAME').toUpperCase(),
+                      captions.getCaption('CARDHOLDER_NAME')!.toUpperCase(),
                       style: kTextStyle,
                     ),
                     SizedBox(
@@ -61,7 +61,7 @@ class FrontCardView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Text(
-                      captions.getCaption('VALID_THRU').toUpperCase(),
+                      captions.getCaption('VALID_THRU')!.toUpperCase(),
                       style: kTextStyle,
                     ),
                     SizedBox(
